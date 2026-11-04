@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>액침냉각 모니터링 · 게이지 차트</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #101d31;
+      --surface: #193453;
+      --border: #29486c;
+      --fg: #f0f6ff;
+      --fg-muted: #b6c7df;
+      --track: #294c70;
+      --pue: #00b2da;
+      --temperature: #008a67;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 24px; background: var(--bg); color: var(--fg); font: 14px/1.5 Arial, 'Noto Sans KR', sans-serif; }
+    .charts { display: grid; gap: 16px; max-width: 680px; }
+    .charts article { min-width: 0; border: 1px solid var(--border); border-radius: 16px; padding: 18px 18px 14px; background: var(--surface); }
+    .charts h2 { margin: 0 0 14px; font-size: 13px; font-weight: 700; letter-spacing: .02em; }
+    .gauge { position: relative; width: 100%; max-width: 280px; margin: auto; aspect-ratio: 2 / 1.25; }
+    .gauge canvas { display: block; width: 100% !important; height: 100% !important; }
+    .gauge .value { position: absolute; inset: auto 0 4%; text-align: center; pointer-events: none; }
+    .gauge output { display: block; color: var(--fg); font-size: clamp(26px, 5vw, 36px); line-height: 1.2; font-weight: 700; font-variant-numeric: tabular-nums; }
+    .gauge .unit { margin-top: 2px; color: var(--fg-muted); font-size: 12px; }
+    .range { display: flex; justify-content: space-between; gap: 8px; max-width: 280px; margin: 8px auto 0; color: var(--fg-muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+    .note { margin: 16px 0 0; color: var(--fg-muted); font-size: 12px; }
+    @media (min-width: 560px) { .charts { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  </style>
+</head>
+<body>
+  <main class="charts" aria-label="액침냉각 계측 게이지">
+    <article>
+      <h2>PUE</h2>
+      <div class="gauge">
+        <canvas id="pueGauge" role="img" aria-label="PUE 1.82, 예시 표시 범위 1.0에서 2.2"></canvas>
+        <div class="value" aria-hidden="true"><output>1.82</output><div class="unit">전력사용효율</div></div>
+      </div>
+      <div class="range"><span>1.0</span><span>2.2</span></div>
+    </article>
+    <article>
+      <h2>TANK TEMP</h2>
+      <div class="gauge">
+        <canvas id="tempGauge" role="img" aria-label="탱크 온도 30.8도, 예시 표시 범위 15도에서 45도"></canvas>
+        <div class="value" aria-hidden="true"><output>30.8°C</output><div class="unit">탱크 온도</div></div>
+      </div>
+      <div class="range"><span>15°C</span><span>45°C</span></div>
+    </article>
+  </main>
+  <p class="note">※ 표시 범위는 UI 확인용 예시입니다. 실제 설비의 운전 기준에 맞게 변경하세요.</p>
+
+  <!-- Chart.js 공식 배포판 (UMD) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js"></script>
+  <script>
+    function renderGauge(id, value, min, max, color) {
+      const canvas = document.getElementById(id);
+      const filled = Math.max(0, Math.min(value - min, max - min));
+      new Chart(canvas, {
+        type: 'doughnut',
+        data: {
+          datasets: [{
+            data: [filled, max - min - filled],
+            backgroundColor: [color, '#294c70'],
+            borderWidth: 0,
+            borderRadius: 10,
+            spacing: 0
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          rotation: -90,
+          circumference: 180,
+          cutout: '78%',
+          layout: { padding: { top: 8, left: 4, right: 4, bottom: 0 } },
+          plugins: { legend: { display: false }, tooltip: { enabled: false } },
+          animation: { duration: 700 }
+        }
+      });
+    }
+
+    renderGauge('pueGauge', 1.82, 1.0, 2.2, '#00b2da');
+    renderGauge('tempGauge', 30.8, 15, 45, '#008a67');
+  </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>액침냉각 전력 모니터링 · 이중 원형 게이지</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js"></script>
+  <script defer src="main.js"></script>
+</head>
+<body>
+  <main class="monitor" aria-label="액침냉각 전력 모니터링">
+    <section class="power-card" aria-labelledby="total-title">
+      <div class="power-card__details">
+        <h2 id="total-title">TOTAL POWER</h2>
+        <dl>
+          <div><dt>PUE</dt><dd>1.82</dd></div>
+          <div><dt>TANK INLET</dt><dd>31.1 <span class="unit">°C</span></dd></div>
+          <div><dt>SETPOINT TEMP</dt><dd>48.0 <span class="unit">°C</span></dd></div>
+        </dl>
+      </div>
+      <div class="power-card__gauge" role="img" aria-label="전체 전력 5.5킬로와트, 최대 기준 55킬로와트, 사용률 10퍼센트">
+        <canvas id="total-gauge" data-value="5.5" data-max="55" data-color="#b9ed00"></canvas>
+      </div>
+    </section>
+    <section class="power-card" aria-labelledby="system-title">
+      <div class="power-card__details">
+        <h2 id="system-title">SYSTEM POWER</h2>
+        <dl>
+          <div><dt>TANK TEMP</dt><dd>30.9 <span class="unit">°C</span></dd></div>
+          <div><dt>TANK OUTLET</dt><dd>31.7 <span class="unit">°C</span></dd></div>
+          <div><dt>INVERTER SETUP</dt><dd>30.9 <span class="unit">°C</span></dd></div>
+        </dl>
+      </div>
+      <div class="power-card__gauge" role="img" aria-label="시스템 전력 0.1킬로와트, 최대 기준 5킬로와트, 사용률 2퍼센트">
+        <canvas id="system-gauge" data-value="0.1" data-max="5" data-color="#2fcaff"></canvas>
+      </div>
+    </section>
+    <section class="power-card" aria-labelledby="server-title">
+      <div class="power-card__details">
+        <h2 id="server-title">SERVER POWER</h2>
+        <dl>
+          <div><dt>TANK INLET</dt><dd>31.1 <span class="unit">°C</span></dd></div>
+          <div><dt>PRESSURE</dt><dd>0.17 <span class="unit">bar</span></dd></div>
+          <div><dt>ALARM</dt><dd>12<span class="unit">건</span></dd></div>
+        </dl>
+      </div>
+      <div class="power-card__gauge" role="img" aria-label="서버 전력 8.3킬로와트, 최대 기준 50킬로와트, 사용률 16.6퍼센트">
+        <canvas id="server-gauge" data-value="8.3" data-max="50" data-color="#e5f000"></canvas>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

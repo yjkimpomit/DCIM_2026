@@ -1,0 +1,22 @@
+:root {
+  color-scheme: dark;
+  font-family: Arial, "Noto Sans KR", sans-serif;
+  --surface: #132c4a;
+  --text: #eef4ff;
+  --muted: #b9c5d9;
+}
+* { box-sizing: border-box; }
+body { margin: 0; min-height: 100vh; background: #081222; color: var(--text); }
+.monitor { width: min(100%, 400px); margin: 0 auto; padding: 0 10px 10px; display: grid; gap: 12px; }
+.power-card { display: grid; grid-template-columns: minmax(0, 1fr) 140px; align-items: center; min-height: 160px; padding: 15px 12px 15px 23px; border-radius: 23px; background: linear-gradient(150deg,#173b5e 0%,#172e4d 50%,#152741 100%); box-shadow: inset 0 0 0 1px #1c4673; }
+.power-card__details { min-width: 0; align-self: stretch; display: flex; flex-direction: column; justify-content: space-between; padding: 5px 0; }
+.power-card h2 { margin: 0; font-size: 13px; line-height: 18px; font-weight: 700; }
+.power-card dl { margin: 12px 0 0; display: grid; gap: 8px; }
+.power-card dl div { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
+.power-card dt { font-size: 12px; font-weight: 700; white-space: nowrap; }
+.power-card dd { margin: 0; font-size: 18px; font-weight: 700; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.power-card dd .unit { font-size: 13px; font-weight: 400; }
+.power-card__gauge { width: 140px; height: 140px; position: relative; }
+.power-card__gauge canvas { display: block; width: 100%; height: 100%; }
+@media (min-width: 800px) { .monitor { width: min(100%, 1240px); padding: 20px; grid-template-columns: repeat(3, minmax(0, 1fr)); } .power-card { grid-template-columns: minmax(0,1fr) 140px; } }
+@media (max-width: 350px) { .power-card { grid-template-columns: minmax(0,1fr) 125px; padding-left: 14px; } .power-card__gauge { width: 125px; height: 125px; } .power-card dt { font-size: 11px; } .power-card dd { font-size: 16px; } }

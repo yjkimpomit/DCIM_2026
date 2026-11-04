@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>액침냉각 게이지 차트</title>
+  <style>
+    :root { color-scheme: dark; font-family: "Noto Sans KR", Arial, sans-serif; background: #0c1d32; color: #e8f2ff; }
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 24px; }
+    .gauges { display: grid; grid-template-columns: 1fr; gap: 16px; max-width: 700px; }
+    .gauge { background: #142b47; border: 1px solid #294564; border-radius: 12px; padding: 20px 24px 16px; }
+    .gauge h2 { font-size: 14px; font-weight: 600; margin: 0 0 8px; }
+    .gauge__plot { height: 156px; position: relative; }
+    .gauge__plot canvas { display: block; width: 100% !important; height: 100% !important; }
+    .gauge__value { position: absolute; inset: auto 0 8px; text-align: center; font-weight: 700; font-size: 27px; letter-spacing: -.02em; pointer-events: none; }
+    .gauge__value small { font-size: 13px; font-weight: 500; color: #c0d1e5; }
+    .gauge__meta { display: flex; justify-content: space-between; gap: 8px; color: #a9c0d8; font-size: 12px; }
+    @media (min-width: 640px) { .gauges { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  </style>
+</head>
+<body>
+  <section class="gauges" aria-label="액침냉각 주요 지표">
+    <article class="gauge">
+      <h2>PUE</h2>
+      <div class="gauge__plot">
+        <canvas id="pue" role="img" aria-label="PUE 1.82, 예시 게이지 범위 1.0에서 2.2"></canvas>
+        <div class="gauge__value" aria-hidden="true">1.82</div>
+      </div>
+      <div class="gauge__meta"><span>1.0</span><span>2.2</span></div>
+    </article>
+    <article class="gauge">
+      <h2>TANK TEMP</h2>
+      <div class="gauge__plot">
+        <canvas id="temperature" role="img" aria-label="탱크 온도 30.8도, 예시 게이지 범위 0도에서 50도"></canvas>
+        <div class="gauge__value" aria-hidden="true">30.8 <small>°C</small></div>
+      </div>
+      <div class="gauge__meta"><span>0°C</span><span>50°C</span></div>
+    </article>
+  </section>
+  <!-- 공식 Chart.js 패키지 UMD 배포본 -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js"></script>
+  <script>
+    // Chart.js가 그린 어두운 전체 트랙 위에, 실제 값 아크를 둥근 끝으로 중첩합니다.
+    const foregroundGauge = {
+      id: 'foregroundGauge',
+      afterDatasetsDraw(chart, args, options) {
+        const arc = chart.getDatasetMeta(0).data[0];
+        if (!arc) return;
+        const ratio = Math.max(0, Math.min(1, options.ratio));
+        if (ratio <= 0) return;
+        const { ctx } = chart;
+        const radius = (arc.outerRadius + arc.innerRadius) / 2;
+        const thickness = arc.outerRadius - arc.innerRadius;
+        const start = arc.startAngle;
+        const end = arc.endAngle;
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(arc.x, arc.y, radius, start, start + (end - start) * ratio);
+        ctx.lineWidth = thickness;
+        ctx.lineCap = 'round';
+        ctx.strokeStyle = options.color;
+        ctx.stroke();
+        ctx.restore();
+      }
+    };
+    Chart.register(foregroundGauge);
+
+    function createGauge(id, value, min, max, color) {
+      const ratio = (value - min) / (max - min);
+      return new Chart(document.getElementById(id), {
+        type: 'doughnut',
+        data: { datasets: [{ data: [1], backgroundColor: '#283f5b', borderWidth: 0, hoverOffset: 0 }] },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          animation: false,
+          events: [],
+          rotation: -90,
+          circumference: 180,
+          cutout: '78%',
+          layout: { padding: { top: 10, left: 14, right: 14, bottom: 0 } },
+          plugins: {
+            legend: { display: false },
+            tooltip: { enabled: false },
+            foregroundGauge: { ratio, color }
+          }
+        }
+      });
+    }
+    createGauge('pue', 1.82, 1, 2.2, '#00B2DA');
+    createGauge('temperature', 30.8, 0, 50, '#008A67');
+  </script>
+</body>
+</html>
