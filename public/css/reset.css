@@ -1,0 +1,91 @@
+@charset "utf-8";
+@import url('/fonts/NotoSansKR/NotoSansKR.css');
+@import url('/fonts/Roboto/Roboto.css');
+
+/* 
+ * 포미트 : SFCMS(스마트팜)
+ * 작성자 : 김윤지
+ * 작성일 : 2025.07.14
+ * 사용처 : 브라우저 리셋
+ */
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, menu, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, main, nav, output, ruby, section, summary, time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+/* HTML5 요소를 블록으로 지정 */
+article, aside, details, figcaption, figure, hgroup, main, section {
+	display: block;
+}
+
+/* 기본 설정 */
+body {
+	line-height: 1;
+	font-family: sans-serif;
+}
+
+ol,
+ul {
+	list-style: none;
+}
+
+blockquote,
+q {
+	quotes: none;
+}
+
+blockquote::before,
+blockquote::after,
+q::before,
+q::after {
+	content: '';
+	content: none;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+button {
+    background-color: transparent;
+    border: none;
+    outline: 0;
+}
+/* 
+[disabled] {
+	opacity: .9;
+} */
+
+[onclick] {
+	cursor: pointer;
+}
+
+/*-------------------------------------------
+  [etc 영역]
+-------------------------------------------*/
+/* 반응형 체크용*/
+#viewportInfo {
+	position: fixed;
+	left: 1rem;
+	bottom: 1rem;
+	z-index: 30;
+	color: #000;
+	background-color: #ffffffE0;
+	border: 1px solid silver;
+	padding: 1rem;
+	border-radius: .5rem;
+}

@@ -43,3 +43,7 @@ next-env.d.ts
 
 # fonts
 /public/*
+
+# css 파일만 허용
+!/public/css/
+!/public/css/**
