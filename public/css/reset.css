@@ -3,10 +3,7 @@
 @import url('/fonts/Roboto/Roboto.css');
 
 /* 
- * 포미트 : SFCMS(스마트팜)
- * 작성자 : 김윤지
- * 작성일 : 2025.07.14
- * 사용처 : 브라우저 리셋
+ * DCIM 2026
  */
 
 *,
@@ -28,8 +25,15 @@ article, aside, details, figcaption, figure, hgroup, main, section {
 
 /* 기본 설정 */
 body {
-	line-height: 1;
-	font-family: sans-serif;
+	line-height: 1.25;
+	font-family: var(--ff-kr), sans-serif;
+}
+
+input,
+select,
+textarea,
+button {
+	font-family: inherit;
 }
 
 ol,
@@ -65,27 +69,51 @@ button {
     border: none;
     outline: 0;
 }
-/* 
+
 [disabled] {
-	opacity: .9;
-} */
+	opacity: var(--opacity-a64);
+}
 
 [onclick] {
 	cursor: pointer;
 }
 
-/*-------------------------------------------
-  [etc 영역]
--------------------------------------------*/
-/* 반응형 체크용*/
-#viewportInfo {
-	position: fixed;
-	left: 1rem;
-	bottom: 1rem;
-	z-index: 30;
-	color: #000;
-	background-color: #ffffffE0;
-	border: 1px solid silver;
-	padding: 1rem;
-	border-radius: .5rem;
+[hidden] {
+	display: none !important;
+}
+
+/* scroll */
+::-webkit-scrollbar {
+	width: 3px;
+	height: 3px;
+}
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-corner {
+	background-color: var(--scrollbar-bg);
+}
+::-webkit-scrollbar-thumb {
+	border-radius: 3px;
+	background-color: var(--scrollbar-thumb);
+}
+::-webkit-scrollbar-button {
+	width: 0;
+	height: 0;
+}
+
+/* date, time picker icon */
+::-webkit-calendar-picker-indicator {
+	background: transparent;
+	cursor: pointer;
+}
+
+.visually-hidden {
+	position: absolute;
+	width: 1px !important;
+	height: 1px !important;
+	padding: 0 !important;
+	margin: -1px !important;
+	overflow: hidden !important;
+	clip: rect(0, 0, 0, 0) !important;
+	white-space: nowrap !important;
+	border: 0 !important;
 }

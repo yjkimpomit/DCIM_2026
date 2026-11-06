@@ -40,10 +40,8 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-
 # fonts
-/public/*
+/public/fonts/*
+/public/images/*
 
-# css 파일만 허용
-!/public/css/
-!/public/css/**
+

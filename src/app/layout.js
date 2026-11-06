@@ -1,7 +1,7 @@
 export const metadata = {
-  title: "DCIM - 포미트",
-  description: "DCIM - 포미트",
-  icons: { icon: "images/favicon_twinplant.ico" },
+  title: "포미트 - DCIM 시스템",
+  description: "액침냉각 시스템",
+  icons: { icon: "/images/favicon.ico" },
 };
 
 export const viewport = {
@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
    <html lang="ko"> 
       <head>
         <link href="/css/layout.css" rel="stylesheet"/>
-         <link href="/css/modal.css" rel="stylesheet"/>
+        <link href="/css/modal.css" rel="stylesheet"/>
 
       </head>
       <body className="page">

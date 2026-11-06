@@ -91,8 +91,8 @@ function closePopup() {
 
 /* 새창/모달 팝업 테스트용 버튼 : 
 	<div class="test-popup">
-		<button class="btn btn-sm btn-outline" onclick="openModal('notice_popup.html', 800, 360);" title="모달팝업 열기">모달팝업</button>
-		<button class="btn btn-sm btn-outline" onclick="openPopup('notice_popup.html', 800, 360);" title="새창팝업 열기">새창팝업</button>
+		<button class="btn btn-sm btn-secondary" onclick="openModal('notice_popup.html', 800, 360);" title="모달팝업 열기">모달팝업</button>
+		<button class="btn btn-sm btn-secondary" onclick="openPopup('notice_popup.html', 800, 360);" title="새창팝업 열기">새창팝업</button>
 	</div>
 */
 

@@ -32,7 +32,7 @@
 }
 
 .modal > .modal-inner .popup-close:hover {
-	background-color: var(--primary-100) !important;
+	background-color: #0E203B !important;
   cursor: pointer;
 }
 
@@ -50,7 +50,7 @@
   width: 900px;
   max-height: 520px;
   height: 460px;
-  background: var(--popup-bg, #fff);
+  background: var(--bg-darknavy-subtle);
   border-radius: 12px;
   box-shadow: 0 10px 30px rgba(0,0,0,.2);
   overflow: auto;

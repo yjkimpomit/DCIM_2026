@@ -1,6 +1,6 @@
 @charset "utf-8";
-@import url('reset.css');
 @import url('variables.css');
+@import url('reset.css');
 @import url('components.css');
 
 /* 
@@ -9,9 +9,50 @@
  * 작성일 : 2025.09.21
  * 사용처 : 레이아웃 스타일
  */
+body {
+	position: relative;
+	max-width: 1920px;
+}
+
+.header::before,
+.join-header::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 4px;
+
+	display: block;
+	z-index: 10;
+
+	background: var(--user-header-gradient);
+}
+
+body::after {
+	content: '';
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	height: 100vh;
+
+	display: block;
+	z-index: -1;
+
+	background-image: var(--canvas-gradient);
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
 body.page {
-	min-width: 1912px;
     min-height: 100vh;
+}
+
+body.page:not(:has(.join)):not(:has(.room-screen)) {
+	min-width: 1912px;
 }
 /* layout */
 .header {
@@ -64,8 +105,8 @@ body.page {
 
 .server-box {
 	overflow: hidden;
-	border-radius: var(--dashboard-panel-radius);
-	border: 1px solid var(--secondary-70);
+	border-radius: 24px;
+	border: 1px solid var(--border-secondary-muted);
 
 	width: 1160px;
 	height: auto;
@@ -84,7 +125,6 @@ body.page {
 }
 .immersion-svg {
 	max-width: 1308px;
-	font-family: var(--font-family);
 }
 
 .dashboard {
@@ -100,7 +140,6 @@ body.page {
 	overflow-y: auto;
 	z-index: 2;
 
-	font-family: var(--font-family);
 }
 
 .dashboard.server {
@@ -139,9 +178,9 @@ body.page {
 }
 
 .breadcrumb li span {
-	font-weight: var(--font-weight-medium);
+	font-weight: 500;
 	font-size: 1rem;
-	color: var(--text-white);
+	color: var(--fg-white);
 
 	white-space: nowrap;
 }
@@ -180,8 +219,8 @@ body.page {
 
 .today {
 	font-size: .875rem;
-	color: var(--text-white);
-	font-weight: var(--font-weight-regular);
+	color: var(--fg-white);
+	font-weight: var(--fw-regular);
 	white-space: nowrap;
 }
 
@@ -241,18 +280,18 @@ body.page {
 	display: inline-block;
 	width: 1px;
 	height: calc(100% - 2rem);
-	background-color: var(--divider-bg);
+	background-color: rgba(255, 255, 255, 36%);
 }
 
 .left-nav .icon {
 	width: 36px;
 	height: 36px;
-	border-radius: var(--icon-box-radius);
+	border-radius: 8px;
 
 	background-size: auto;
 	background-position: center;
 	background-repeat: no-repeat;
-	background-color: var(--icon-box-bg);
+	background-color: rgba(255, 255, 255, 12%);
 	transition: all .3s;
 
 	position: relative;
@@ -327,12 +366,12 @@ body.page {
 	justify-content: center;
 
 	padding: .25rem .5rem .375rem;
-	font-weight: var(--font-weight-medium);
+	font-weight: 500;
 	white-space: nowrap;
-	color: var(--text-darkest);
+	color: var(--fg-inverse);
 
 	border-radius: .5rem;
-	background-color: var(--accent);
+	background-color: var(--bg-lime-default);
 }
 
 .left-nav .icon:hover>span {
@@ -351,17 +390,17 @@ body.page {
 	height: 0;
 	border-top: .5rem solid transparent;
 	border-bottom: .5rem solid transparent;
-	border-right: .5rem solid var(--accent);
+	border-right: .5rem solid var(--bg-lime-default);
 }
 
 /* dashboard section */
 .section {
 	width: 100%;
-	border: 1px solid var(--dashboard-panel-border);
-	background-image: linear-gradient(180deg, var(--dashboard-panel-bg-1), var(--dashboard-panel-bg-2));
-	border-radius: var(--dashboard-panel-radius);
+	border: 1px solid #0A3463;
+	background-image: linear-gradient(180deg, #13375C, var(--bg-darknavy-subtle));
+	border-radius: 24px;
 	padding: 1rem 1rem 1rem 1.5rem;
-	color: var(--text-lightest);
+	color: var(--fg-neutral-stronger);
 
 	display: flex;
 	flex-wrap: wrap;
@@ -377,8 +416,8 @@ body.page {
 	max-width: 100%;
 
 	font-size: .875rem;
-	font-weight: var(--font-weight-bold);
-	color: var(--gray-10);
+	font-weight: var(--fw-bold);
+	color: var(--fg-neutral-emphasis);
 	white-space: nowrap;
 	text-transform: uppercase;
 
@@ -406,19 +445,19 @@ body.page {
 	gap: 1rem;
 	width: 100%;
 	height: 100%;
-	background-image: url(/images/pue-bg.png), linear-gradient(180deg, var(--dashboard-panel-bg-1), var(--dashboard-panel-bg-2));
+	background-image: url(/images/pue-bg.png), linear-gradient(180deg, #13375C, var(--bg-darknavy-subtle));
 	background-repeat: no-repeat;
 	background-position: center 48px, center bottom;
 }
 
 .sec-2.section {
-	background-image: url(/images/tank-bg.png), linear-gradient(180deg, var(--dashboard-panel-bg-1), var(--dashboard-panel-bg-2));
+	background-image: url(/images/tank-bg.png), linear-gradient(180deg, #13375C, var(--bg-darknavy-subtle));
 }
 
 .pue,
 .tank {
 	font-size: 1.75rem;
-	font-weight: var(--font-weight-bold);
+	font-weight: var(--fw-bold);
 
 	display: flex;
 	align-items: center;
@@ -446,7 +485,7 @@ body.page {
 
 .tank .unit {
 	font-size: 1rem;
-	font-weight: var(--font-weight-regular);
+	font-weight: var(--fw-regular);
 }
 
 /* server-resource */
@@ -472,7 +511,7 @@ body.page {
 }
 
 .chart-group .chart-box.bar {
-	border-bottom: 1px solid var(--secondary-60);
+	border-bottom: 1px solid var(--border-secondary-default);
 	margin-bottom: 1rem;
 }
 
@@ -511,8 +550,8 @@ body.page {
 	text-align: right;
 	line-height: 26px;
 	font-size: .75rem;
-	font-weight: var(--font-weight-medium);
-	color: var(--gray-20);
+	font-weight: 500;
+	color: var(--fg-neutral-strongest);
 }
 
 /* gauge */
@@ -597,7 +636,7 @@ body.page {
 	align-items: center;
 	justify-content: space-between;
 	height: 32px;
-	border-bottom: 1px solid var(--white-20);
+	border-bottom: 1px solid rgba(255, 255, 255, 12%);
 }
 
 .list .item>span {
@@ -665,9 +704,9 @@ body.page {
 }
 
 .list-header .item {
-	font-weight: var(--font-weight-bold);
+	font-weight: var(--fw-bold);
 	height: 28px;
-	background-color: var(--primary-100);
+	background-color: #0E203B;
 }
 
 .list-header .item>span.icon-alarm {
@@ -733,8 +772,8 @@ body.page {
 
 .info-title {
 	font-size: .875rem;
-	font-weight: var(--font-weight-bold);
-	color: var(--gray-10);
+	font-weight: var(--fw-bold);
+	color: var(--fg-neutral-emphasis);
 	white-space: nowrap;
 	text-transform: uppercase;
 
@@ -755,8 +794,7 @@ body.page {
 
 .dl-detail dt {
 	font-size: .875rem;
-	font-weight: var(--font-weight-medium);
-	color: var(--gray-20);
+	color: var(--fg-neutral-strongest);
 
 	flex: 1 0 128px;
 	max-width: 128px;
@@ -779,8 +817,8 @@ body.page {
 .fs-on {
 	width: 36px;
 	height: 36px;
-	border-radius: var(--icon-box-radius);
-	background-color: var(--icon-box-bg);
+	border-radius: 8px;
+	background-color: rgba(255, 255, 255, 12%);
 	background-image: url(/images/icons/icon-fullscreen.svg);
 	background-repeat: no-repeat;
 	background-position: center;
