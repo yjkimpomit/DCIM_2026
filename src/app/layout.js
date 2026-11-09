@@ -13,7 +13,6 @@ export default function RootLayout({ children }) {
    <html lang="ko"> 
       <head>
         <link href="/css/layout.css" rel="stylesheet"/>
-        <link href="/css/modal.css" rel="stylesheet"/>
 
       </head>
       <body className="page">

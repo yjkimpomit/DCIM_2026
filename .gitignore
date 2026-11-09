@@ -15,6 +15,7 @@
 
 # next.js
 /.next/
+/.next-dev/
 /out/
 
 # production
@@ -43,5 +44,5 @@ next-env.d.ts
 # fonts
 /public/fonts/*
 /public/images/*
-
+/____참고/model-viewer/assets/fonts/*
 

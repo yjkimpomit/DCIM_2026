@@ -11,14 +11,13 @@ export default function CctvPreviewButton() {
 
   function closePopup() {
     setIsOpen(false);
-    requestAnimationFrame(() => buttonRef.current?.focus());
   }
 
   return (
     <>
       {/* 퍼블리싱 확인용 임시 버튼. 실제 CCTV 위치 버튼 연결 후 제거. */}
-      <button ref={buttonRef} type="button" className="btn btn-primary btn-sm room-model-cctv" aria-haspopup="dialog" onClick={() => setIsOpen(true)}>CCTV 팝업 (임시)</button>
-      {isOpen && <CctvModal camera={camera} onClose={closePopup} />}
+      <button ref={buttonRef} type="button" className="btn btn-primary btn-sm user-model-cctv" aria-haspopup="dialog" onClick={() => setIsOpen(true)}>CCTV 팝업 (임시)</button>
+      {isOpen && <CctvModal camera={camera} onClose={closePopup} returnFocusRef={buttonRef} />}
     </>
   );
 }

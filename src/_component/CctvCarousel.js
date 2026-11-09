@@ -23,7 +23,6 @@ export default function CctvCarousel() {
 
   function closeCamera() {
     setSelectedCamera(null);
-    requestAnimationFrame(() => triggerRef.current?.focus());
   }
 
   function updateButtons(swiper) {
@@ -32,19 +31,19 @@ export default function CctvCarousel() {
   }
 
   return (
-    <section className="room-cctv-section" aria-label="CCTV" aria-roledescription="캐러셀">
-      <div className="room-card-heading">
-        <h4 className="room-section-title">CCTV</h4>
-        <div className="room-cctv-controls">
-          <button type="button" className="room-card-button button-icon button-icon-previous" aria-label="이전 CCTV" aria-controls="room-cctv-slider" disabled={atStart} onClick={() => slider?.slidePrev()}>
+    <section className="user-cctv-section" aria-label="CCTV" aria-roledescription="캐러셀">
+      <div className="user-card-heading">
+        <h4 className="user-section-title">CCTV</h4>
+        <div className="user-cctv-controls">
+          <button type="button" className="user-card-button button-icon button-icon-previous" aria-label="이전 CCTV" aria-controls="room-cctv-slider" disabled={atStart} onClick={() => slider?.slidePrev()}>
           </button>
-          <button type="button" className="room-card-button button-icon button-icon-next" aria-label="다음 CCTV" aria-controls="room-cctv-slider" disabled={atEnd} onClick={() => slider?.slideNext()}>
+          <button type="button" className="user-card-button button-icon button-icon-next" aria-label="다음 CCTV" aria-controls="room-cctv-slider" disabled={atEnd} onClick={() => slider?.slideNext()}>
           </button>
         </div>
       </div>
       <Swiper
         id="room-cctv-slider"
-        className="room-cctv-slider"
+        className="user-cctv-slider"
         modules={[A11y]}
         slidesPerView={2}
         slidesPerGroup={1}
@@ -58,17 +57,17 @@ export default function CctvCarousel() {
       >
         {cameras.map(({ id, label, image, viewerUrl, isError }) => (
           <SwiperSlide key={image}>
-            <figure className="room-cctv">
-              <button type="button" className="room-cctv-open" aria-label={`${label} CCTV 확대 보기`} aria-haspopup="dialog" onClick={(event) => { triggerRef.current = event.currentTarget; setSelectedCamera({ id, label, image, viewerUrl, isError }); }}>
-                <img className="room-cctv-image" src={image} alt="" width={240} height={135} />
+            <figure className="user-cctv">
+              <button type="button" className="user-cctv-open" aria-label={`${label} CCTV 확대 보기`} aria-haspopup="dialog" onClick={(event) => { triggerRef.current = event.currentTarget; setSelectedCamera({ id, label, image, viewerUrl, isError }); }}>
+                <img className="user-cctv-image" src={image} alt="" width={240} height={135} />
               </button>
-              {/* 정상: room-cctv-status / 이상: room-cctv-status room-cctv-status-error */}
-              <figcaption className="room-cctv-caption">{label}<span className={`room-cctv-status${isError ? " room-cctv-status-error" : ""}`} role="img" aria-label={isError ? "이상 발생" : "정상"}></span></figcaption>
+              {/* 정상: user-cctv-status / 이상: user-cctv-status user-cctv-status-error */}
+              <figcaption className="user-cctv-caption">{label}<span className={`user-cctv-status${isError ? " user-cctv-status-error" : ""}`} role="img" aria-label={isError ? "이상 발생" : "정상"}></span></figcaption>
             </figure>
           </SwiperSlide>
         ))}
       </Swiper>
-      {selectedCamera && <CctvModal camera={selectedCamera} onClose={closeCamera} />}
+      {selectedCamera && <CctvModal camera={selectedCamera} onClose={closeCamera} returnFocusRef={triggerRef} />}
     </section>
   );
 }

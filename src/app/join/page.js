@@ -1,6 +1,18 @@
 "use client";
 
+import { useState } from "react";
+import PasswordHelp from "@/_component/PasswordHelp";
+import { passwordRules, validatePassword } from "@/_lib/password";
+
 export default function Join() {
+  const [error, setError] = useState("");
+
+  function submit(event) {
+    event.preventDefault();
+    const values = new FormData(event.currentTarget);
+    setError(validatePassword({ password: values.get("password"), confirmation: values.get("passwordConfirmation"), username: values.get("username"), mobile: values.get("mobile") }));
+  }
+
   return (
     <>
       <link rel="stylesheet" href="/css/join.css" />
@@ -29,10 +41,10 @@ export default function Join() {
 
           <form
             className="form-box"
-            onSubmit={(event) => event.preventDefault()}
+            onSubmit={submit}
           >
             <div className="form-item">
-              <label htmlFor="joinId" className="form-label">
+              <label htmlFor="join-id" className="form-label">
                 아이디{" "}
                 <span className="required" aria-hidden="true">
                   *
@@ -40,7 +52,7 @@ export default function Join() {
               </label>
               <input
                 className="form-control"
-                id="joinId"
+                id="join-id"
                 name="username"
                 type="text"
                 autoComplete="username"
@@ -48,7 +60,7 @@ export default function Join() {
               />
             </div>
             <div className="form-item">
-              <label htmlFor="joinName" className="form-label">
+              <label htmlFor="join-name" className="form-label">
                 이름{" "}
                 <span className="required" aria-hidden="true">
                   *
@@ -56,7 +68,7 @@ export default function Join() {
               </label>
               <input
                 className="form-control"
-                id="joinName"
+                id="join-name"
                 name="name"
                 type="text"
                 autoComplete="name"
@@ -64,7 +76,7 @@ export default function Join() {
               />
             </div>
             <div className="form-item">
-              <label htmlFor="joinEmail" className="form-label">
+              <label htmlFor="join-email" className="form-label">
                 이메일{" "}
                 <span className="required" aria-hidden="true">
                   *
@@ -72,7 +84,7 @@ export default function Join() {
               </label>
               <input
                 className="form-control"
-                id="joinEmail"
+                id="join-email"
                 name="email"
                 type="email"
                 autoComplete="email"
@@ -80,7 +92,7 @@ export default function Join() {
               />
             </div>
             <div className="form-item">
-              <label htmlFor="joinPassword" className="form-label">
+              <label htmlFor="join-password" className="form-label">
                 비밀번호{" "}
                 <span className="required" aria-hidden="true">
                   *
@@ -88,18 +100,17 @@ export default function Join() {
               </label>
               <input
                 className="form-control"
-                id="joinPassword"
+                id="join-password"
                 name="password"
                 type="password"
                 autoComplete="new-password"
-                minLength={8}
-                maxLength={15}
-                aria-describedby="joinPasswordHelp"
+                {...passwordRules}
+                aria-describedby="join-password-help"
                 required
               />
             </div>
             <div className="form-item">
-              <label htmlFor="joinPasswordConfirm" className="form-label">
+              <label htmlFor="join-password-confirm" className="form-label">
                 비밀번호 확인{" "}
                 <span className="required" aria-hidden="true">
                   *
@@ -107,30 +118,19 @@ export default function Join() {
               </label>
               <input
                 className="form-control"
-                id="joinPasswordConfirm"
+                id="join-password-confirm"
                 name="passwordConfirmation"
                 type="password"
                 autoComplete="new-password"
-                minLength={8}
-                maxLength={15}
-                aria-describedby="joinPasswordHelp"
+                minLength={passwordRules.minLength}
+                maxLength={passwordRules.maxLength}
+                aria-describedby="join-password-help"
                 required
               />
             </div>
-            <div id="joinPasswordHelp" className="account-help">
-              <span className="account-help-icon" aria-hidden="true"></span>
-              <div className="account-help-content">
-                <p>입력자리 수 제한: 최소 8 / 최대 15</p>
-                <p>필수 입력 값: 영문대문자, 영문소문자, 숫자, 특수문자</p>
-                <p>입력 제한 값: 아이디, 휴대전화</p>
-                <p className="account-help-warning">
-                  여러 사이트에서 사용하는 동일한 비밀번호나 쉬운 비밀번호로
-                  설정 시 도용될 위험이 있습니다.
-                </p>
-              </div>
-            </div>
+            <PasswordHelp id="join-password-help" />
             <div className="form-item">
-              <label htmlFor="joinMobile" className="form-label">
+              <label htmlFor="join-mobile" className="form-label">
                 휴대전화{" "}
                 <span className="required" aria-hidden="true">
                   *
@@ -138,7 +138,7 @@ export default function Join() {
               </label>
               <input
                 className="form-control"
-                id="joinMobile"
+                id="join-mobile"
                 name="mobile"
                 type="tel"
                 autoComplete="mobile tel"
@@ -146,38 +146,38 @@ export default function Join() {
               />
             </div>
             <div className="form-item">
-              <label htmlFor="joinTelephone" className="form-label">
+              <label htmlFor="join-telephone" className="form-label">
                 전화번호
               </label>
               <input
                 className="form-control"
-                id="joinTelephone"
+                id="join-telephone"
                 name="telephone"
                 type="tel"
                 autoComplete="home tel"
               />
             </div>
             <div className="form-item">
-              <label htmlFor="joinBirthday" className="form-label">
+              <label htmlFor="join-birthday" className="form-label">
                 생년월일
               </label>
               <input
                 className="form-control form-control-date"
-                id="joinBirthday"
+                id="join-birthday"
                 name="birthday"
                 type="date"
                 autoComplete="bday"
               />
             </div>
             <div className="form-item">
-              <label htmlFor="joinPostcode" className="form-label">
+              <label htmlFor="join-postcode" className="form-label">
                 주소
               </label>
               <div className="join-address">
                 <div className="join-postcode">
                   <input
                     className="form-control"
-                    id="joinPostcode"
+                    id="join-postcode"
                     name="postcode"
                     type="text"
                     inputMode="numeric"
@@ -213,6 +213,7 @@ export default function Join() {
                 </p>
               </div>
             </div>
+            {error && <p className="form-error" role="alert">{error}</p>}
             <button type="submit" className="btn btn-primary btn-lg btn-login">
               가입 완료
             </button>

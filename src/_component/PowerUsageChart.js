@@ -34,5 +34,5 @@ export default function PowerUsageChart({ title, categories, values, monthly = f
     return () => { disposed = true; chart?.destroy(); };
   }, [title, categories, values, monthly]);
 
-  return <div ref={containerRef} className="room-power-chart" />;
+  return <div ref={containerRef} className="user-power-chart" />;
 }

@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="theme-color" content="#FFFFFF">
+	<title>모델뷰어-김포열병합 DT</title>
+
+	<meta name="description" content="작업-김포열병합 DT 서비스 제공">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- favicon -->
+	<link rel="icon" href="favicon.ico" sizes="any">
+	<link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+	<link rel="stylesheet" href="./assets/fonts/NotoSansKR/NotoSansKR.css" />
+	<link rel="stylesheet" href="./assets/css/reset.css" />
+	<link rel="stylesheet" href="./assets/css/model-viewer.css" />
+</head>
+
+<body>
+	<!-- 배경컬러 -->
+	<div class="model-viewer">
+
+		<!-- 건물명 -->
+		<section>
+			<h2>건물명</h2>
+			<button class="building" type="button">AUX BLR</button>
+		</section>
+
+		<!-- 마우스 우클릭 팝오버 -->
+		<section>
+			<h2>마우스 우클릭 팝오버</h2>
+			<div class="plant-menu">
+				<strong class="plant-menu__title">김포열병합</strong>
+
+				<ul class="plant-menu__list">
+					<li>
+						<button type="button" class="plant-menu__button">AIR COMPRESSOR</button>
+					</li>
+					<li>
+						<button type="button" class="plant-menu__button">AUX BOILER</button>
+					</li>
+					<li>
+						<button type="button" class="plant-menu__button">Cooling Tower</button>
+					</li>
+					<li>
+						<button type="button" class="plant-menu__button">EDG</button>
+					</li>
+					<li>
+						<button type="button" class="plant-menu__button">N2</button>
+					</li>
+					<li>
+						<button type="button" class="plant-menu__button">GT</button>
+					</li>
+					<li>
+						<button type="button" class="plant-menu__button">Ammonia Storage Shelter</button>
+					</li>
+					<li>
+						<button type="button" class="plant-menu__button">HRSG</button>
+					</li>
+					<li>
+						<button type="button" class="plant-menu__button">ST</button>
+					</li>
+				</ul>
+			</div>
+		</section>
+
+		<!-- 설비정보 팝오버 -->
+		<section>
+			<h2>설비정보 팝오버</h2>
+			<div class="facility-popover">
+				<div class="facility-popover__header">
+					<strong class="facility-popover__title">HRSG BLDG</strong>
+					<button type="button" class="facility-popover__close" aria-label="닫기">
+						<span class="icon icon--close" aria-hidden="true"></span>
+					</button>
+				</div>
+				<div class="facility-popover__actions">
+					<button type="button" class="facility-action">
+						<span class="icon icon--facility" aria-hidden="true"></span>
+						<span>설비정보</span>
+					</button>
+
+					<button type="button" class="facility-action">
+						<span class="icon icon--panorama" aria-hidden="true"></span>
+						<span>파노라마</span>
+					</button>
+
+					<button type="button" class="facility-action">
+						<span class="icon icon--pid" aria-hidden="true"></span>
+						<span>P&amp;ID</span>
+					</button>
+
+					<button type="button" class="facility-action">
+						<span class="icon icon--ows" aria-hidden="true"></span>
+						<span>OWS</span>
+					</button>
+				</div>
+			</div>
+		</section>
+
+		<section>
+			<h2>AI 알람 아이콘 및 클릭시 팝오버 <small>updated: 2026-10-12</small></h2>
+			<!-- AI 알람 아이콘 -->
+			<span class="status-indicator" role="img" aria-label="AI 알람">
+				<span class="status-indicator__icon" aria-hidden="true"></span>
+			</span>
+
+			<!--AI 알람 팝오버 -->
+			<div class="safety-popover">
+				<div class="safety-popover__header">
+					<strong class="safety-popover__title">STEAM T/G BLDG</strong>
+					<button type="button" class="safety-popover__close" aria-label="닫기">
+						<span class="icon icon--close" aria-hidden="true"></span>
+					</button>
+				</div>
+
+				<div class="safety-popover__status">
+					<strong>상태</strong>
+					<span>안전주의 3건</span>
+				</div>
+
+				<div class="safety-popover__section">
+					<strong class="safety-popover__section-title">안전현황</strong>
+
+					<ul class="safety-popover__list">
+						<li>
+							<button type="button" class="safety-status">
+								<strong>밀폐</strong>
+								<span>2건</span>
+							</button>
+						</li>
+
+						<li>
+							<button type="button" class="safety-status">
+								<strong>화학물질</strong>
+								<span>1건</span>
+							</button>
+						</li>
+
+						<li>
+							<button type="button" class="safety-status">
+								<strong>중량물</strong>
+								<span>1건</span>
+							</button>
+						</li>
+
+						<li>
+							<button type="button" class="safety-status safety-status--danger">
+								<strong>CCTV-02 안전모 미착용</strong>
+								<span>1건</span>
+							</button>
+						</li>
+					</ul>
+				</div>
+			</div>
+			
+			<ol class="comment">
+				<li>팝오버는 좌측 -16픽셀, 탑 -16픽셀만큼 이동시켜 주세요. (알람 아이콘과 오버랩)</li>
+			</ol>
+		</section>
+
+		<section>
+			<h2>안전작업 알람 아이콘 및 팝오버 <small>updated: 2026-10-12</small></h2>
+
+			<div class="splitview">
+				<div class="splitview__pane">
+					<div>
+						<h3>정상일때, </h3>
+						<!-- 안전작업 알람 아이콘 -->
+						<span class="worker-badge worker-badge--normnal" role="img" aria-label="안전작업 정상">
+							<span class="worker-badge__icon" aria-hidden="false"></span>
+							<span class="worker-badge__status" aria-hidden="false" style="display: none;"></span>
+						</span>
+
+						<!-- 안전작업 알람 팝오버 -->
+						<div class="work-popover">
+							<div class="work-popover__header">
+								<strong class="work-popover__title">GT-룸</strong>
+								<button type="button" class="work-popover__close" aria-label="닫기">
+									<span class="icon icon--close" aria-hidden="true"></span>
+								</button>
+							</div>
+
+							<dl class="work-popover__info">
+								<div class="work-popover__item work-popover__item--success">
+									<dt>안전 상태</dt>
+									<dd>정상</dd>
+								</div>
+
+								<div class="work-popover__item">
+									<dt>현재 상태</dt>
+									<dd>작업 중</dd>
+								</div>
+
+								<div class="work-popover__item">
+									<dt>작업 인원</dt>
+									<dd>10명</dd>
+								</div>
+
+								<div class="work-popover__item">
+									<dt>작업 구역</dt>
+									<dd>GT {__작업구역__}</dd>
+								</div>
+							</dl>
+
+							<div class="work-popover__section">
+								<h3 class="work-popover__section-title">작업일정</h3>
+
+								<dl class="work-popover__info">
+									<div class="work-popover__item">
+										<dt>작업 시작</dt>
+										<dd>10:20</dd>
+									</div>
+
+									<div class="work-popover__item">
+										<dt>예정 종료</dt>
+										<dd>12:00</dd>
+									</div>
+								</dl>
+							</div>
+						</div>
+
+
+					</div>
+
+				</div>
+				
+				<div class="splitview__pane">
+					<div>
+						<h3>이상발생시, </h3>
+						<!-- 안전작업 알람 아이콘 -->
+						<span class="worker-badge worker-badge--urgent" role="img" aria-label="안전작업 이상발생">
+							<span class="worker-badge__icon" aria-hidden="true"></span>
+							<span class="worker-badge__status" aria-hidden="true"></span>
+						</span>
+
+						<!-- 안전작업 알람 팝오버 -->
+						<div class="work-popover">
+							<div class="work-popover__header">
+								<strong class="work-popover__title">GT-룸</strong>
+								<button type="button" class="work-popover__close" aria-label="닫기">
+									<span class="icon icon--close" aria-hidden="true"></span>
+								</button>
+							</div>
+
+							<dl class="work-popover__info">
+								<div class="work-popover__item work-popover__item--danger">
+									<dt>안전 상태</dt>
+									<dd>경고 1</dd>
+								</div>
+
+								<div class="work-popover__item work-popover__item--danger">
+									<dt>현재 상태</dt>
+									<dd>쓰러짐 1</dd>
+								</div>
+
+								<div class="work-popover__item">
+									<dt>작업 인원</dt>
+									<dd>10명</dd>
+								</div>
+
+								<div class="work-popover__item">
+									<dt>작업 구역</dt>
+									<dd>GT {__작업구역__}</dd>
+								</div>
+							</dl>
+
+							<div class="work-popover__section">
+								<h3 class="work-popover__section-title">작업일정</h3>
+
+								<dl class="work-popover__info">
+									<div class="work-popover__item">
+										<dt>작업 시작</dt>
+										<dd>10:20</dd>
+									</div>
+
+									<div class="work-popover__item">
+										<dt>예정 종료</dt>
+										<dd>12:00</dd>
+									</div>
+								</dl>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			
+			<ol class="comment">
+				<li>팝오버는 좌측 -16픽셀, 탑 -16픽셀만큼 이동시켜 주세요. (알람 아이콘과 오버랩)</li>
+			</ol>
+			
+		</section>
+
+		<section>
+			<h2>4족보행로봇 아이콘 <small>updated: 2026-10-19</small></h2>
+			<!-- 4족보행로봇 아이콘 -->
+			<span class="robotic-dog-badge" role="img" aria-label="4족보행로봇">
+				<span class="robotic-dog-badge__icon" aria-hidden="true"></span>
+			</span>
+		</section>
+
+		<!-- 건물 하이라이트 -->
+		<section>
+			<h2>건물 하이라이트 스타일</h2>
+			<div class="model-focus-ring"></div>
+		</section>
+
+		<!-- 모델 트리 -->
+		<!-- 
+		576px 미만 - 하단 > 트리 패널 클릭시 model-tree에 is-active 클래스가 추가되면 나타납니다.
+		576px 이상 - model-tree 패널은 우측에 나타납니다.
+		-->
+		<section>
+			<h2>모델 트리메뉴 <small>updated: 2026-10-08</small></h2>
+			<div class="model-tree">
+				<div class="model-tree-header">
+					<div class="model-tree-header__filters">
+						<button type="button" class="model-tree-header__home" title="처음 레벨"></button>
+						<label class="visually-hidden" for="facilityType">설비 구분</label>
+						<select id="facilityType" class="model-tree-header__select">
+							<option>AUX BLR</option>
+						</select>
+
+						<label class="visually-hidden" for="facilityFloor">층 선택</label>
+						<select id="facilityFloor" class="model-tree-header__select">
+							<option>1F</option>
+						</select>
+						<button type="button" class="model-tree-header__reset" title="초기화"></button>
+						<button type="button" class="model-tree-header__toggle" title="트리메뉴 토글"></button>
+					</div>
+
+					<div class="model-tree-header__search">
+						<div class="model-tree-header__search-field">
+							<input type="text" class="model-tree-header__search-input" placeholder="설비검색" aria-label="설비검색">
+						</div>
+
+						<div>
+							<button type="button" class="model-tree-header__search-button" aria-label="설비 검색">
+								<span class="model-tree-header__search-icon" aria-hidden="true"></span>
+							</button>
+						</div>
+					</div>
+				</div>
+				
+				<div class="model-tree__body">
+					<!-- 
+					모델 트리 메뉴의 뎁스별 왼쪽 여백은 24*n 만큼 증가됩니다.
+					-->
+					<div class="model-tree__list" role="list" aria-label="설비 목록">
+						<div class="model-tree__row model-tree__row--collapsed" role="listitem">
+							<div class="model-tree__left">
+								<span class="model-tree__arrow" aria-hidden="true"></span>
+								<span class="model-tree__label" title="1F">1F</span>
+							</div>
+							<div class="model-tree__right">
+								<button type="button" class="icon icon--treeitem-description" aria-label="1F 설비정보"></button>
+								<button type="button" class="icon icon--treeitem-visible" aria-label="1F 숨기기"></button>
+							</div>
+						</div>
+						<div class="model-tree__row model-tree__row--expanded hover" role="listitem">
+							<div class="model-tree__left">
+								<span class="model-tree__arrow" aria-hidden="true"></span>
+								<span class="model-tree__label" title="2F">2F</span>
+							</div>
+							<div class="model-tree__right">
+								<button type="button" class="icon icon--treeitem-description" aria-label="2F 설비정보"></button>
+								<button type="button" class="icon icon--treeitem-invisible" aria-label="2F 표시하기"></button>
+							</div>
+						</div>
+						<div class="model-tree__row model-tree__row--expanded model-tree__row--depth-1" role="listitem">
+							<div class="model-tree__left">
+								<span class="model-tree__arrow" aria-hidden="true"></span>
+								<div class="model-tree__label" title="터빈설비">터빈설비</div>
+							</div>
+							<div class="model-tree__right">
+								<button type="button" class="icon icon--treeitem-description" aria-label="터빈설비 설비정보"></button>
+								<button type="button" class="icon icon--treeitem-visible" aria-label="터빈설비 숨기기"></button>
+							</div>
+						</div>
+						<div class="model-tree__row model-tree__row--depth-2 active" role="listitem">
+							<div class="model-tree__left">
+								<div class="model-tree__label" title="터빈본체">터빈본체</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="model-tree__footer">
+					<div class="footer-left">
+						<button type="button" class="icon icon--structure" aria-label="구조물" title="구조물"></button>
+						<button type="button" class="icon icon--stacks" aria-label="층" title="층"></button>
+						<button type="button" class="icon icon--duct" aria-label="덕트" title="덕트"></button>
+						<button type="button" class="icon icon--speed_camera" aria-label="CCTV" title="CCTV"></button>
+						<button type="button" class="icon icon--fire_extinguisher" aria-label="소방설비" title="소방설비"></button>
+						<button type="button" class="icon icon--qr_code" aria-label="QR 코드" title="QR 코드"></button>
+					</div>
+					<div class="footer-right">
+						<button type="button" class="icon icon--help" aria-label="도움말" title="도움말"></button>
+					</div>
+				</div>
+			</div>
+			
+			<ol class="comment">
+				<li>트리메뉴는 디자인 시안처럼 우측의 세로 영역을 꽉 채워 주세요. <br>(기즈모 높이 제외, 둘 사이의 간격은 16픽셀)</li>
+				<li>모바일에서는 기본으로 가림처리, 헤더영역의 트리메뉴 토글버튼 클릭시 보이게 해주세요.</li>
+			</ol>
+		</section>
+
+		<!-- 뷰포트 기즈모 -->
+		<section>
+			<h2>기즈모 스타일</h2>
+			<div class="viewport-gizmo">
+				<div class="gizmo">
+					<img src="./assets/images/viewport-gizmo.svg" alt="뷰포트 기즈모">
+				</div>
+			
+				<table>
+					<tr>
+						<td colspan="2">기즈모 스타일</td>
+					</tr>
+					<tr>
+						<th>텍스트 및 아이콘</th>
+						<td>color: #FFFFFF</td>
+					</tr>
+					<tr>
+						<th>아이콘 배경</th>
+						<td>background-color: rgba(84, 116, 182, 0.32)</td>
+					</tr>
+					<tr>
+						<th>TOP BG, FRONT BG</th>
+						<td>background-color: rgba(84, 116, 182, 0.48)</td>
+					</tr>
+					<tr>
+						<th>LEFT BG, RIGHT BG</th>
+						<td>background-color: rgba(84, 116, 182, 0.6)</td>
+					</tr>
+				</table>
+			</div>
+		</section>
+			
+	</div>
+</body>
+</html>

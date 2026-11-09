@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 
-export default function ResourceMeterChart({ label, value, color }) {
+export default function ResourceMeterChart({ label, value, color, displayValue }) {
   const containerRef = useRef(null);
   const percentage = Math.min(100, Math.max(0, Number(value) || 0));
   // 컴퓨팅 리소스(전체): 70% 이상 레드 / 50% 이상 오렌지 / 25% 이상 라임 / 0% 이상 시안.
@@ -23,7 +23,6 @@ export default function ResourceMeterChart({ label, value, color }) {
       const gradient = styles.getPropertyValue(`--chart-gradient-${barColor}`);
       const colors = gradient.match(/#[\da-f]{3,8}\b|rgba?\([^)]*\)/gi) || [];
       const trackColor = styles.getPropertyValue("--chart-bg").trim();
-
       chart = Highcharts.chart(containerRef.current, {
         chart: {
           type: "bar",
@@ -73,12 +72,12 @@ export default function ResourceMeterChart({ label, value, color }) {
   }, [label, percentage, barColor]);
 
   return (
-    <div className="room-resource-row">
-      <span>{label}</span>
-      <div className="room-meter" role="meter" aria-label={label} aria-valuemin={0} aria-valuemax={100} aria-valuenow={percentage} aria-valuetext={`${percentage}%`}>
-        <div ref={containerRef} className="room-meter-chart" aria-hidden="true" />
+    <div className="user-resource-row">
+      <span className="user-resource-label">{label}</span>
+      <div className="user-meter" role="meter" aria-label={label} aria-valuemin={0} aria-valuemax={100} aria-valuenow={percentage} aria-valuetext={displayValue ? `${displayValue} (${percentage}%)` : `${percentage}%`}>
+        <div ref={containerRef} className="user-meter-chart" aria-hidden="true" />
       </div>
-      <span className="room-resource-value">{percentage}%</span>
+      <span className="user-resource-value">{displayValue ?? `${percentage}%`}</span>
     </div>
   );
 }

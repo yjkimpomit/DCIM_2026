@@ -1,0 +1,171 @@
+/* reset.css – 기본 스타일 초기화 */
+:root {
+	color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+
+/* Global scrollbar */
+* {
+	scrollbar-width: thin;
+	scrollbar-color: #848B94 rgba(9, 13, 25, 0.64);
+}
+
+*::-webkit-scrollbar {
+	width: 10px;
+	height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+	border-inline-start: 2px solid transparent;
+	background-color: rgba(9, 13, 25, 0.64);
+	background-clip: padding-box;
+}
+
+*::-webkit-scrollbar-thumb {
+	border: 1px solid transparent;
+	border-inline-start-width: 2px;
+	background-color: #848B94;
+	background-clip: padding-box;
+}
+
+*::-webkit-scrollbar-corner {
+	background-color: rgba(9, 13, 25, 0.64);
+}
+
+button,
+input,
+select,
+textarea {
+	font-family: inherit;
+}
+
+.visually-hidden {
+	position: absolute;
+
+	inline-size: 1px;
+	block-size: 1px;
+	padding: 0;
+	margin: -1px;
+
+	overflow: hidden;
+	clip: rect(0 0 0 0);
+	clip-path: inset(50%);
+
+	white-space: nowrap;
+	border: 0;
+}
+
+
+
+/******** 샘플용 - 개발시 사용안함 ********/
+.comment {
+	font-size: 16px;
+	font-weight: 400;
+	display: block;
+    inline-size: 720px;
+	padding-block: 1rem;
+	background-color: rgba(255, 255, 255, 0.1);
+	color: #b4bdc5;
+	border-radius: 16px;
+}
+
+.comment li:not(:last-child) {
+	margin-bottom: 1rem;
+}
+
+li > ul {
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
+
+code {
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	display: flex;
+	align-items: center;
+	border: 2px double #ffffff33;
+	padding: 24px 32px;
+	margin-block: 24px;
+}
+
+/******** 샘플용 - 개발시 사용안함 ********/
+html,
+body {
+	height: auto;
+	overflow: visible;
+}
+
+section {
+	margin-bottom: 3rem;
+}
+
+.model-viewer {
+	display: flex;
+	gap: 16px;
+	flex-direction: column;
+	padding: 24px;
+}
+
+.model-focus-ring {
+	inline-size: 240px;
+	block-size: 80px;
+}
+
+table {
+	border-collapse: collapse;
+	border-top: 2px solid rgba(9, 13, 25, 0.6);
+	color: #FFF;
+	white-space: nowrap;
+}
+
+table th,
+table td {
+	padding: 12px 16px;
+	font-size: 14px;
+	line-height: 18px;
+	text-align: left;
+
+	border-right: 1px solid rgba(9, 13, 25, 0.6);
+	border-bottom: 1px solid rgba(9, 13, 25, 0.6);
+}
+
+table th {
+	min-width: 120px;
+	background: rgba(9, 13, 25, 0.1);
+}
+
+table td:last-child {
+	border-right: 0;
+}
+
+h2 small {
+	margin-inline: 16px;
+	padding-inline: 8px;
+	color: #fff;
+	background-color: #df134c;
+	text-decoration: underline;
+
+	font-size: 16px;
+}
+
+.splitview {
+	display: flex;
+	align-items: flex-start;
+	gap: 24px;
+	flex-direction: row;
+}

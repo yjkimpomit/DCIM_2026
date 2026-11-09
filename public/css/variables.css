@@ -289,7 +289,19 @@
 	--disabled: 0.64;
 	--placeholder: 0.92;
 
+	/* 아이콘 크기: semantic */
+	--icon-size-sm: 20px;
+	--icon-size-md: 24px;
+	--icon-size-lg: 48px;
+
 	/* component */
+	--button-icon-size: var(--icon-size-md);
+	--button-padding-x: var(--space-100);
+	--button-pagination-padding: var(--space-050);
+	--button-search-padding-start: calc(var(--space-200) + var(--icon-size-sm) + var(--space-100));
+	--weather-icon-size: var(--icon-size-lg);
+	--cctv-icon-size: var(--icon-size-sm);
+	--cctv-fullscreen-icon-size: var(--icon-size-md);
 	--switch-width: 60px;
 	--scrollbar-bg: var(--bg-darknavy-subtlest-a64);
 	--scrollbar-thumb: var(--fg-neutral-default);
@@ -356,6 +368,8 @@
 			var(--gradient-orange-100) 100%);
 	--focus-ring-shadow: 0 0 0 var(--focus-ring-stroke) var(--focus-ring);
 	--form-bg: var(--bg-secondary-default-a24);
+	--form-option-selected-bg: var(--form-bg-hover);
+	--form-option-selected-color: var(--fg-white);
 	--form-bg-hover: var(--bg-secondary-muted-a64);
 	--form-border: var(--border-secondary-strong-a48);
 	--form-border-radius: var(--radius-sm);

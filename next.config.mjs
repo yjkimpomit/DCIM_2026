@@ -6,6 +6,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  distDir: process.env.NODE_ENV === "development" ? ".next-dev" : ".next",
   output: "standalone",
   // assetPrefix는 보통 프로덕션에서만 설정하고, 끝에 / 권장
   // 예: "http://127.0.0.1:3000/"
