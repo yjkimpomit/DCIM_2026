@@ -43,6 +43,5 @@ next-env.d.ts
 
 # fonts
 /public/fonts/*
-/public/images/*
 /____참고/model-viewer/assets/fonts/*
 
