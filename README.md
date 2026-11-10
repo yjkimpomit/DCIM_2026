@@ -1,5 +1,14 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## CSS 로딩 정책
+
+- 공통 CSS는 `src/app/layout.js`에서 `variables.css → reset.css → components.css → layout.css` 순서로 한 번만 로딩합니다.
+- 폰트 CSS는 `reset.css`에서만 import합니다.
+- 화면 CSS는 해당 페이지 또는 Frame 한 곳에서 로딩하며, 공통 CSS나 다른 화면 CSS를 import하지 않습니다.
+- 로그인·회원가입 공유 폼 스타일은 `components.css`에 정의합니다.
+- 사용자 화면 CSS는 `UserFrame`, 관리자 화면 CSS는 `AdminFrame`에서 관리합니다.
+- 사용자 공통 스타일은 `user-layout.css`에서 로딩하고, `server-dashboard.css`는 서버 대시보드에서만 추가로 로딩합니다.
+
 ## Getting Started
 
 First, run the development server:

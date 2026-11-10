@@ -12,14 +12,102 @@
 	box-sizing: border-box;
 }
 
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, menu, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, main, nav, output, ruby, section, summary, time, mark, audio, video {
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+menu,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+main,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
 	margin: 0;
 	padding: 0;
 	border: 0;
 }
 
 /* HTML5 요소를 블록으로 지정 */
-article, aside, details, figcaption, figure, hgroup, main, section {
+article,
+aside,
+details,
+figcaption,
+figure,
+hgroup,
+main,
+section {
 	display: block;
 }
 
@@ -65,9 +153,9 @@ a {
 }
 
 button {
-    background-color: transparent;
-    border: none;
-    outline: 0;
+	background-color: transparent;
+	border: none;
+	outline: 0;
 }
 
 [disabled] {
@@ -87,14 +175,17 @@ button {
 	width: 3px;
 	height: 3px;
 }
+
 ::-webkit-scrollbar-track,
 ::-webkit-scrollbar-corner {
 	background-color: var(--scrollbar-bg);
 }
+
 ::-webkit-scrollbar-thumb {
 	border-radius: 3px;
 	background-color: var(--scrollbar-thumb);
 }
+
 ::-webkit-scrollbar-button {
 	width: 0;
 	height: 0;

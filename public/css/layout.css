@@ -1,51 +1,116 @@
 @charset "utf-8";
-@import url('variables.css');
-@import url('reset.css');
-@import url('components.css');
+
 body {
-  position: relative;
-  max-width: 1920px;
+	position: relative;
+	max-width: 1920px;
 }
 
 .join-header::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 4px;
 
-  display: block;
-  z-index: 10;
+	display: block;
+	z-index: 10;
 
-  background: var(--user-header-gradient);
+	background: var(--user-header-gradient);
 }
 
 body::after {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 100vh;
+	content: '';
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	height: 100vh;
 
-  display: block;
-  z-index: -1;
+	display: block;
+	z-index: -1;
 
-  background-image: var(--canvas-gradient);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
+	background-image: var(--user-canvas-gradient);
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
 }
 
 body.page {
-    min-height: 100vh;
+	min-height: 100vh;
 }
 
 body.page:not(:has(.join)):not(:has(.user-screen)):not(:has(.admin-screen)) {
-  min-width: 1912px;
+	min-width: 1912px;
 }
+
 .immersion-svg {
-  max-width: 1308px;
+	max-width: 1308px;
+}
+
+/* 사용자·관리자 공통 헤더 버튼: 글자색은 화면별 스타일을 유지한다. */
+.header-button {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	height: 36px;
+	--button-padding-x: var(--space-150);
+	padding: calc(var(--space-150) / 2) var(--button-padding-x);
+	border: 1px solid var(--border-secondary-strong-a48);
+	border-radius: var(--radius-full);
+	background-color: var(--bg-secondary-default-a24);
+	font-size: var(--fs-14);
+	font-weight: var(--fw-semi-bold);
+}
+
+.header-button:hover {
+	background-color: var(--bg-secondary-subtle);
+}
+
+.header-actions .button-icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 36px;
+	height: 36px;
+	border: 1px solid var(--border-secondary-strong-a48);
+	border-radius: var(--radius-full);
+	background-color: var(--bg-secondary-default-a24);
+}
+
+.header-actions .button-icon:hover {
+	background-color: var(--bg-secondary-subtle);
+}
+
+/* 사용자·관리자 공통 헤더 액션 영역 */
+.header-actions {
+	display: flex;
+	flex-wrap: nowrap;
+	align-items: center;
+	justify-content: flex-end;
+	margin-left: auto;
+	gap: 16px;
+}
+
+/* 사용자·관리자 공통 헤더 시계 */
+.header-clock {
+	font-size: var(--fs-16);
+	white-space: nowrap;
+	display: block;
+	margin-right: 8px;
+}
+
+/* 사용자·관리자 공통 키보드 포커스 */
+:is(.header-button,
+	.header-actions .button-icon,
+	.user-settings,
+	.user-nav-link,
+	.user-breadcrumb-home,
+	.admin-user-dashboard,
+	.admin-nav-link,
+	.admin-breadcrumb-home,
+	.admin-skip-link):focus-visible {
+	outline: 2px solid var(--focus-ring);
+	outline-offset: -2px;
 }

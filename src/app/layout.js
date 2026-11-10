@@ -1,23 +1,25 @@
 export const metadata = {
-  title: "포미트 - DCIM 시스템",
-  description: "액침냉각 시스템",
-  icons: { icon: "/images/favicon.ico" },
+	title: "포미트 - DCIM 시스템",
+	description: "액침냉각 시스템",
+	icons: { icon: "/images/favicon.ico" },
 };
 
 export const viewport = {
-  width: "device-width",
-  initialScale: 1,
+	width: "device-width",
+	initialScale: 1,
 };
 export default function RootLayout({ children }) {
-  return (
-   <html lang="ko"> 
-      <head>
-        <link href="/css/layout.css" rel="stylesheet"/>
-
-      </head>
-      <body className="page">
-        {children}
-      </body>
-    </html>
-  );
+	return (
+		<html lang="ko">
+			<head>
+				<link href="/css/variables.css" rel="stylesheet" />
+				<link href="/css/reset.css" rel="stylesheet" />
+				<link href="/css/components.css" rel="stylesheet" />
+				<link href="/css/layout.css" rel="stylesheet" />
+			</head>
+			<body className="page">
+				{children}
+			</body>
+		</html>
+	);
 }

@@ -205,6 +205,7 @@
 	--bg-primary-muted: var(--blue-600);
 	--bg-primary-default: var(--blue-500);
 	--bg-primary-strong: var(--blue-400);
+	--bg-secondary-subtlest: var(--navy-900);
 	--bg-secondary-subtler: var(--navy-800);
 	--bg-secondary-subtle: var(--navy-700);
 	--bg-secondary-subtle-a24: color-mix(in srgb, var(--bg-secondary-subtle) 24%, transparent);
@@ -316,16 +317,11 @@
 	--badge-radius: var(--radius-full);
 	--badge-font-size: var(--fs-14);
 	--badge-font-size-sm: var(--fs-12);
-	--admin-header-gradient: linear-gradient(to left,
-			var(--bg-primary-subtler) 0%,
-			var(--bg-primary-muted) 100%);
 	--aside-width-sm: 320px;
 	--aside-width-md: 400px;
 	--box-shadow-1: 0 0 16px 2px var(--bg-darknavy-subtlest-a64);
 	--box-shadow-2: 0 0 8px 0 var(--bg-darknavy-subtlest-a48);
-	--canvas-gradient: radial-gradient(ellipse 50% 50% at center top,
-			var(--bg-primary-subtler) 0%,
-			var(--bg-darknavy-subtlest) 100%);
+
 	--card-gradient: linear-gradient(180deg,
 			var(--bg-darknavy-muted) 0%,
 			var(--bg-darknavy-subtle) 100%);
@@ -391,9 +387,18 @@
 	--table-th-border: var(--border-secondary-default);
 	--table-td-bg: var(--bg-secondary-default-a8);
 	--table-td-border: var(--border-secondary-muted);
+
 	--user-header-gradient: linear-gradient(to left,
 			var(--pomit-blue) 0%,
 			var(--pomit-cyan) 44%,
 			var(--pomit-emerald) 66%,
 			var(--pomit-green) 100%);
+	--user-canvas-gradient: radial-gradient(ellipse 50% 50% at center top,
+			var(--bg-primary-subtler) 0%,
+			var(--bg-darknavy-subtlest) 100%);
+
+
+	--admin-header-gradient: linear-gradient(to left,
+			var(--bg-primary-subtler) 0%,
+			var(--bg-primary-muted) 100%);
 }
