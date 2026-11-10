@@ -3,7 +3,9 @@
 import PanelHeading from "@/_component/PanelHeading";
 
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import moment from "moment";
+import { INTERVAL, SET_ALARM_RECENT } from "@/_lib/wsMonitor";
 import Pagination from "@/_component/Pagination";
 import ConfirmDialog from "@/_component/ConfirmDialog";
 import UserFrame from "@/_component/UserFrame";
@@ -29,6 +31,17 @@ const initialAlarms = Array.from({ length: 20 }, (_, index) => ({
 const emptyFilters = { status: "", type: "", severity: "", period: "" };
 
 export default function ServerAlarmsPublishing() {
+	const [now, setNow] = useState(null);
+	useEffect(() => {
+		setNow(Date.now());
+		// 디자인 확인용: 첫 번째 샘플을 최근 발생 알람 1건으로 표시한다.
+		setAlarms((items) => items.map((alarm, index) => index === 0
+			? { ...alarm, occurredAt: moment().format("YYYY-MM-DD HH:mm:ss") }
+			: alarm));
+		const timer = setInterval(() => setNow(Date.now()), INTERVAL);
+		return () => clearInterval(timer);
+	}, []);
+
 	const [alarms, setAlarms] = useState(initialAlarms);
 	const [filters, setFilters] = useState(emptyFilters);
 	const [applied, setApplied] = useState(emptyFilters);
@@ -184,10 +197,11 @@ export default function ServerAlarmsPublishing() {
 							>
 								<table className="data-table user-table user-alarm-table">
 									<caption className="visually-hidden">
-										알람 발생시각, 알람명, 유형, 대상, 심각도, 지속시간, 상태
+										최근 알람 여부, 알람 발생시각, 알람명, 유형, 대상, 심각도, 지속시간, 상태
 									</caption>
 									<thead>
 										<tr className="data-table-row">
+											<th className="data-table-heading user-alarm-column-icon" scope="col"><span className="visually-hidden">최근 알람</span></th>
 											<th className="data-table-heading" scope="col">알람 발생시각</th>
 											<th className="data-table-heading" scope="col">알람명</th>
 											<th className="data-table-heading" scope="col">알람유형</th>
@@ -206,6 +220,11 @@ export default function ServerAlarmsPublishing() {
 												) || ""}`}
 												onClick={() => selectAlarm(alarm)}
 											>
+												<td className="data-table-cell">
+													{now !== null && moment(alarm.occurredAt, "YYYY-MM-DD HH:mm:ss").isAfter(moment(now).subtract(SET_ALARM_RECENT, "minutes")) && (
+														<span className="button-icon button-icon-alarm user-alarm-recent-icon" role="img" aria-label={`최근 ${SET_ALARM_RECENT}분 이내 발생한 알람`} />
+													)}
+												</td>
 												<td className="data-table-cell">{alarm.occurredAt}</td>
 												<td className="data-table-cell">
 													<button
@@ -238,7 +257,7 @@ export default function ServerAlarmsPublishing() {
 										))}
 										{!filtered.length && (
 											<tr className="data-table-row">
-												<td className="data-table-cell" colSpan={7}>조회 결과가 없습니다.</td>
+												<td className="data-table-cell" colSpan={8}>조회 결과가 없습니다.</td>
 											</tr>
 										)}
 									</tbody>

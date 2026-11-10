@@ -38,6 +38,30 @@
 	background: var(--user-header-gradient);
 }
 
+.header-actions .header-alarm {
+	position: relative;
+	border: 0;
+	background-color: transparent;
+}
+
+.header-alarm-count {
+	position: absolute;
+	top: -2px;
+	right: -4px;
+	min-width: 20px;
+	height: 20px;
+	padding: 0 3px;
+	border: 2px solid var(--fg-white);
+	border-radius: var(--badge-radius);
+	background-color: var(--bg-danger-muted);
+	color: var(--fg-white);
+	font-size: var(--badge-font-size-sm);
+	font-weight: var(--fw-semi-bold);
+	line-height: 16px;
+	text-align: center;
+	white-space: nowrap;
+}
+
 
 .user-layout {
 	flex: 1;

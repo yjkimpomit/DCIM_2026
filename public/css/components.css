@@ -99,6 +99,10 @@ dl dd {
 	mask-image: url('/images/icons/settings.svg');
 }
 
+.button-icon-alarm::before {
+	mask-image: url('/images/icons/notifications.svg');
+}
+
 .button-icon-dashboard::before {
 	mask-image: url('/images/icons/dashboard.svg');
 }

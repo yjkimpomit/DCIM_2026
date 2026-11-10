@@ -285,30 +285,47 @@
 
 .user-alarm-table {
 	table-layout: fixed;
-	min-width: 1000px;
+	min-width: 1048px;
 }
 
-.user-alarm-table th:nth-child(1) {
-	width: 190px;
+.user-alarm-column-icon {
+	width: 48px;
+}
+
+.user-alarm-recent-icon {
+	--button-icon-size: var(--icon-size-sm);
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	vertical-align: middle;
+	color: var(--fg-white);
+	background: var(--bg-danger-subtle-a92);
+	width: 32px;
+	height: 32px;
+	border-radius: var(--radius-full);
 }
 
 .user-alarm-table th:nth-child(2) {
-	width: 280px;
+	width: 190px;
 }
 
 .user-alarm-table th:nth-child(3) {
-	width: 90px;
+	width: 280px;
 }
 
 .user-alarm-table th:nth-child(4) {
-	width: 110px;
-}
-
-.user-alarm-table th:nth-child(5) {
 	width: 90px;
 }
 
+.user-alarm-table th:nth-child(5) {
+	width: 110px;
+}
+
 .user-alarm-table th:nth-child(6) {
+	width: 90px;
+}
+
+.user-alarm-table th:nth-child(7) {
 	width: 120px;
 }
 
