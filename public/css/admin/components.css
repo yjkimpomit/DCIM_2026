@@ -22,10 +22,6 @@
 	background-color: var(--fg-neutral-strong);
 }
 
-.admin-user-dashboard:hover {
-	background-color: var(--bg-secondary-subtler);
-}
-
 .admin-page-header {
 	display: flex;
 	flex-wrap: nowrap;

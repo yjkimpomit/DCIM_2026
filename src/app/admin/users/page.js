@@ -105,20 +105,20 @@ function UserInformationForm({ user, onSave, onCancel }) {
 
 	return <>
 		<form className="admin-user-form" onSubmit={(event) => { event.preventDefault(); onSave(form); }}>
-			<div className="admin-form-grid">
+			<div className="form-grid form-grid-two">
 				<div className="form-field">
 					<label className="form-label" htmlFor="users-field-1">사용자 아이디<span className="form-field-required" aria-hidden="true"> *</span></label>
 					<input className="form-control" id="users-field-1" required value={form.username} readOnly autoComplete="username" />
 				</div>
 				<div className="form-field">
 					<span className="form-label">비밀번호 <span className="form-field-required">*</span></span>
-					<div className="admin-inline-field">
+					<div className="form-inline">
 						<input className="form-control" aria-label="비밀번호" type="password" value="*****" readOnly />
 						<button className="btn btn-primary btn-lg" type="button" onClick={() => setMessage("비밀번호가 초기화 되었습니다. 초기화된 비밀번호는 12345입니다.")}>
 							초기화
 						</button>
 					</div>
-					<p className="form-field-help">초기화 시 비밀번호는 12345로 설정됩니다.</p>
+					<p className="form-help-text">초기화 시 비밀번호는 12345로 설정됩니다.</p>
 				</div>
 				<div className="form-field">
 					<label className="form-label" htmlFor="users-field-2">권한<span className="form-field-required" aria-hidden="true"> *</span></label>
@@ -150,8 +150,8 @@ function UserInformationForm({ user, onSave, onCancel }) {
 				</div>
 				<div className="form-field form-field-full">
 					<span className="form-label">주소</span>
-					<div className="admin-address-fields">
-						<div className="admin-inline-field admin-postcode-field">
+					<div className="form-address">
+						<div className="form-inline form-postcode">
 							<input className="form-control" aria-label="우편번호" value={form.postcode} onChange={set("postcode")} />
 							<button className="btn btn-primary btn-lg" type="button" aria-haspopup="dialog" onClick={() => setAddressSearchOpen(true)}>주소 검색</button>
 						</div>

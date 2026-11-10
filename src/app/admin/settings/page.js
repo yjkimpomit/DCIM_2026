@@ -50,8 +50,8 @@ function AdminProfileForm({ user, onSave }) {
 	const [overlay, setOverlay] = useState(null);
 	return <>
 		<form className="admin-profile-form" onSubmit={(event) => { event.preventDefault(); onSave(form); }}>
-			<p className="admin-form-guide"><span className="form-field-required">*</span> 해당 표시가 되어 있는 항목은 필수 입력사항입니다.</p>
-			<div className="admin-form-grid">
+			<p className="form-guide"><span className="form-field-required">*</span> 해당 표시가 되어 있는 항목은 필수 입력사항입니다.</p>
+			<div className="form-grid form-grid-two">
 				<div className="form-field">
 					<label className="form-label" htmlFor="settings-field-1">아이디<span className="form-field-required" aria-hidden="true"> *</span></label>
 					<input className="form-control" id="settings-field-1" required value={form.username} readOnly autoComplete="username" />
@@ -62,7 +62,7 @@ function AdminProfileForm({ user, onSave }) {
 				</div>
 				<div className="form-field form-field-full">
 					<span className="form-label">비밀번호 <span className="form-field-required">*</span></span>
-					<div className="admin-inline-field admin-password-field">
+					<div className="form-inline form-password">
 						<input className="form-control" aria-label="비밀번호" type="password" value="*****" readOnly />
 						<button className="btn btn-primary btn-lg" type="button" onClick={() => setOverlay("password")}>비밀번호 변경</button>
 					</div>
@@ -85,8 +85,8 @@ function AdminProfileForm({ user, onSave }) {
 				</div>
 				<div className="form-field form-field-full">
 					<span className="form-label">주소</span>
-					<div className="admin-address-fields">
-						<div className="admin-inline-field admin-postcode-field">
+					<div className="form-address">
+						<div className="form-inline form-postcode">
 							<input className="form-control" aria-label="우편번호" value={form.postcode} onChange={set("postcode")} />
 							<button className="btn btn-primary btn-lg" type="button" aria-haspopup="dialog" onClick={() => setAddressSearchOpen(true)}>주소 검색</button>
 						</div>
@@ -118,7 +118,7 @@ function PasswordDialog({ username, mobile, onClose, onComplete }) {
 	}
 	return <AdminDialog title="비밀번호 변경" onClose={onClose}>
 		<form onSubmit={submit}>
-			<div className="admin-form-stack">
+			<div className="form-grid">
 				<div className="form-field">
 					<label className="form-label" htmlFor="settings-field-7">기존 비밀번호<span className="form-field-required" aria-hidden="true"> *</span></label>
 					<input className="form-control" id="settings-field-7" name="currentPassword" type="password" autoComplete="current-password" required autoFocus />
@@ -133,7 +133,7 @@ function PasswordDialog({ username, mobile, onClose, onComplete }) {
 				</div>
 			</div>
 			<PasswordHelp id="admin-password-help" className="admin-password-help" />
-			{error && <p className="form-error admin-form-error" role="alert">{error}</p>}
+			{error && <p className="form-error" role="alert">{error}</p>}
 			<div className="form-actions">
 				<button type="submit" className="btn btn-primary btn-lg">비밀번호 변경</button>
 				<button type="button" className="btn btn-secondary btn-lg" onClick={onClose}>취소</button>

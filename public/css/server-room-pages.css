@@ -13,11 +13,13 @@
 }
 
 .user-computing-grid {
-	display: grid;
+	display: flex;
 	gap: 24px;
-	grid-template-columns: var(--aside-width-sm) minmax(0, 1fr);
-	grid-template-rows: minmax(0, 1fr);
 	overflow: hidden;
+}
+
+.user-computing-grid .user-results {
+	flex: 1;
 }
 
 .user-detail-sidebar {
@@ -224,6 +226,7 @@
 /* CCTV 이상 발생 시 적용하는 상태 아이콘 */
 
 .user-computing-grid .user-detail-sidebar {
+	flex: 0 0 var(--aside-width-sm);
 	min-height: 0;
 	overflow-y: auto;
 }

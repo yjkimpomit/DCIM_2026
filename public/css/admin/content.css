@@ -94,32 +94,6 @@
 	line-height: 1.7;
 }
 
-.admin-form-guide {
-	margin-bottom: 24px;
-	padding: 20px 16px;
-	background-color: var(--bg-primary-subtle);
-	font-size: var(--fs-14);
-	line-height: 1.7;
-	text-align: center;
-}
-
-.admin-form-grid {
-	display: grid;
-	grid-template-columns: repeat(2, minmax(0, 1fr));
-	gap: 16px 24px;
-}
-
-.admin-form-stack {
-	display: grid;
-	gap: 16px;
-}
-
-.admin-inline-field {
-	display: flex;
-	align-items: center;
-	gap: 8px;
-}
-
 .admin-activation {
 	margin-top: 24px;
 	padding-top: 16px;
@@ -129,23 +103,6 @@
 .admin-activation .form-label {
 	margin-bottom: 12px;
 	font-size: var(--fs-14);
-}
-
-.admin-form-error {
-	margin-top: 16px;
-}
-
-.admin-address-fields {
-	display: grid;
-	gap: 8px;
-}
-
-.admin-postcode-field {
-	max-width: 308px;
-}
-
-.admin-password-field {
-	max-width: 308px;
 }
 
 .admin-password-help {
@@ -166,6 +123,6 @@
 	margin-top: 24px;
 }
 
-.admin-user-form .admin-form-grid {
+.admin-user-form .form-grid {
 	row-gap: 24px;
 }

@@ -7,7 +7,7 @@
 	color: var(--fg-white);
 }
 
-.form-box {
+.form {
 	display: flex;
 	flex-direction: column;
 	gap: var(--space-300);
@@ -204,11 +204,11 @@ dl dd {
 	padding-inline-end: 40px;
 }
 
-.form-item:has(> .form-control.search) {
+.form-field:has(> .form-control.search) {
 	position: relative;
 }
 
-.form-item:has(> .form-control.search)::after {
+.form-field:has(> .form-control.search)::after {
 	content: '';
 	position: absolute;
 	inset-inline-end: 8px;
@@ -226,20 +226,15 @@ dl dd {
 }
 
 /* 검색버튼 추가 */
-.form-item {
-	display: flex;
-	flex-direction: column;
-}
-
-.form-item:has(.icon.search) {
+.form-field:has(.icon.search) {
 	position: relative;
 }
 
-.form-item:has(.icon.search) .form-control {
+.form-field:has(.icon.search) .form-control {
 	padding-right: 3.5rem;
 }
 
-.form-item .icon.search {
+.form-field .icon.search {
 	text-indent: -9999rem;
 	width: 40px;
 	height: 40px;
@@ -334,30 +329,6 @@ input[type="date"]:not(.form-control) {
 	background-color: var(--fg-white);
 	background-repeat: no-repeat;
 	background-position: right .5rem center;
-}
-
-.form-control-date {
-	position: relative;
-	padding-inline-start: 48px;
-	color: var(--fg-neutral-strong);
-	background-image: url('/images/icons/calendar_today.svg');
-	background-repeat: no-repeat;
-	background-position: 16px center;
-	background-size: var(--icon-size-md);
-	color-scheme: dark;
-}
-
-.form-control-date::-webkit-calendar-picker-indicator {
-	position: absolute;
-	inset-inline-start: 16px;
-	top: 50%;
-	width: var(--icon-size-md);
-	height: var(--icon-size-md);
-	margin: 0;
-	padding: 0;
-	opacity: 0;
-	transform: translateY(-50%);
-	cursor: pointer;
 }
 
 /* disabled */
@@ -1050,7 +1021,7 @@ button {
 }
 
 /* 공통 비밀번호 안내 */
-.account-help {
+.form-help {
 	display: flex;
 	align-items: flex-start;
 	gap: 12px;
@@ -1060,14 +1031,14 @@ button {
 	line-height: 1.7;
 }
 
-.account-help-icon {
+.form-help-icon {
 	flex: 0 0 var(--icon-size-md);
 	height: var(--icon-size-md);
 	background-color: var(--fg-lime-default);
 	mask: url('/images/icons/report.svg') center / contain no-repeat;
 }
 
-.account-help-warning {
+.form-help-warning {
 	margin-top: 12px;
 	font-weight: var(--fw-bold);
 	line-height: 1.4;
@@ -1101,6 +1072,8 @@ button {
 }
 
 .form-field {
+	display: flex;
+	flex-direction: column;
 	min-width: 0;
 }
 
@@ -1193,7 +1166,7 @@ button {
 	min-width: 120px;
 }
 
-.form-field-help {
+.form-help-text {
 	margin-top: 8px;
 	font-size: var(--fs-14);
 	line-height: 1.6;
@@ -1368,4 +1341,65 @@ button {
 .live-alarm-table td {
 	overflow: hidden;
 	text-overflow: ellipsis;
+}
+/* Common form layouts */
+.form-grid {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr);
+	gap: 16px 24px;
+}
+
+@media (min-width: 640px) {
+	.form-grid-two {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+.form-guide {
+	padding: 20px 16px;
+	color: var(--fg-neutral-stronger);
+	background-color: var(--bg-primary-subtle);
+	font-size: var(--fs-14);
+	line-height: 1.7;
+	text-align: center;
+}
+
+.form-guide + .form-grid {
+	margin-top: 24px;
+}
+
+.form .form-guide + .form-grid {
+	margin-top: 0;
+}
+
+.form-inline {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.form-inline .form-control {
+	min-width: 0;
+}
+
+.form-address {
+	display: grid;
+	gap: 8px;
+}
+
+.form-postcode,
+.form-password {
+	max-width: 308px;
+}
+
+.form-grid + .form-error {
+	margin-top: 16px;
+}
+
+.form-grid > .form-actions {
+	margin-top: 16px;
+}
+
+.form-help + .form-error {
+	margin-top: 16px;
 }

@@ -42,23 +42,23 @@ export default function Join() {
 					</h1>
 				</header>
 
-				<main className="join-form form-box">
+				<main className="join-form form">
 					<h2 className="form-title">회원가입</h2>
-					<p className="join-notice">
-						<span className="required" aria-hidden="true">
+					<p className="form-guide">
+						<span className="form-field-required" aria-hidden="true">
 							*
 						</span>{" "}
 						해당 표시가 되어 있는 항목은 필수 입력사항입니다.
 					</p>
 
 					<form
-						className="form-box"
+						className="form-grid form-grid-two"
 						onSubmit={submit}
 					>
-						<div className="form-item">
+						<div className="form-field">
 							<label htmlFor="join-id" className="form-label">
 								아이디{" "}
-								<span className="required" aria-hidden="true">
+								<span className="form-field-required" aria-hidden="true">
 									*
 								</span>
 							</label>
@@ -71,10 +71,10 @@ export default function Join() {
 								required
 							/>
 						</div>
-						<div className="form-item">
+						<div className="form-field">
 							<label htmlFor="join-name" className="form-label">
 								이름{" "}
-								<span className="required" aria-hidden="true">
+								<span className="form-field-required" aria-hidden="true">
 									*
 								</span>
 							</label>
@@ -87,26 +87,10 @@ export default function Join() {
 								required
 							/>
 						</div>
-						<div className="form-item">
-							<label htmlFor="join-email" className="form-label">
-								이메일{" "}
-								<span className="required" aria-hidden="true">
-									*
-								</span>
-							</label>
-							<input
-								className="form-control"
-								id="join-email"
-								name="email"
-								type="email"
-								autoComplete="email"
-								required
-							/>
-						</div>
-						<div className="form-item">
+						<div className="form-field">
 							<label htmlFor="join-password" className="form-label">
 								비밀번호{" "}
-								<span className="required" aria-hidden="true">
+								<span className="form-field-required" aria-hidden="true">
 									*
 								</span>
 							</label>
@@ -121,10 +105,10 @@ export default function Join() {
 								required
 							/>
 						</div>
-						<div className="form-item">
+						<div className="form-field">
 							<label htmlFor="join-password-confirm" className="form-label">
 								비밀번호 확인{" "}
-								<span className="required" aria-hidden="true">
+								<span className="form-field-required" aria-hidden="true">
 									*
 								</span>
 							</label>
@@ -140,11 +124,27 @@ export default function Join() {
 								required
 							/>
 						</div>
-						<PasswordHelp id="join-password-help" />
-						<div className="form-item">
+						<PasswordHelp id="join-password-help" className="form-field-full" />
+						<div className="form-field">
+							<label htmlFor="join-email" className="form-label">
+								이메일{" "}
+								<span className="form-field-required" aria-hidden="true">
+									*
+								</span>
+							</label>
+							<input
+								className="form-control"
+								id="join-email"
+								name="email"
+								type="email"
+								autoComplete="email"
+								required
+							/>
+						</div>
+						<div className="form-field">
 							<label htmlFor="join-mobile" className="form-label">
 								휴대전화{" "}
-								<span className="required" aria-hidden="true">
+								<span className="form-field-required" aria-hidden="true">
 									*
 								</span>
 							</label>
@@ -157,19 +157,7 @@ export default function Join() {
 								required
 							/>
 						</div>
-						<div className="form-item">
-							<label htmlFor="join-telephone" className="form-label">
-								전화번호
-							</label>
-							<input
-								className="form-control"
-								id="join-telephone"
-								name="telephone"
-								type="tel"
-								autoComplete="home tel"
-							/>
-						</div>
-						<div className="form-item">
+						<div className="form-field">
 							<label htmlFor="join-birthday" className="form-label">
 								생년월일
 							</label>
@@ -181,12 +169,24 @@ export default function Join() {
 								autoComplete="bday"
 							/>
 						</div>
-						<div className="form-item">
+						<div className="form-field">
+							<label htmlFor="join-telephone" className="form-label">
+								전화번호
+							</label>
+							<input
+								className="form-control"
+								id="join-telephone"
+								name="telephone"
+								type="tel"
+								autoComplete="home tel"
+							/>
+						</div>
+						<div className="form-field form-field-full">
 							<label htmlFor="join-postcode" className="form-label">
 								주소
 							</label>
-							<div className="join-address">
-								<div className="join-postcode">
+							<div className="form-address">
+								<div className="form-inline form-postcode">
 									<input
 										className="form-control"
 										id="join-postcode"
@@ -223,19 +223,21 @@ export default function Join() {
 									placeholder="상세주소 입력"
 									aria-label="상세주소"
 								/>
-								<p className="account-help">
+								<p className="form-help">
 									<span
-										className="account-help-icon join-address-icon"
+										className="form-help-icon"
 										aria-hidden="true"
 									></span>
 									주소 검색 후 상세주소까지 입력해야 회원가입이 완료됩니다.
 								</p>
 							</div>
 						</div>
-						{error && <p className="form-error" role="alert">{error}</p>}
-						<button type="submit" className="btn btn-primary btn-lg btn-login">
-							가입 완료
-						</button>
+						{error && <p className="form-error form-field-full" role="alert">{error}</p>}
+						<div className="form-actions form-field-full">
+							<button type="submit" className="btn btn-primary btn-lg btn-login">
+								가입 완료
+							</button>
+						</div>
 					</form>
 				</main>
 			</div>

@@ -74,7 +74,7 @@ export default function AccountRecovery({ mode, onClose }) {
 				</div>
 
 				{isId && isResult ? (
-					<div className="form-box">
+					<div className="form">
 						<div className="account-result" role="status">
 							아이디는 external_user 입니다.
 						</div>
@@ -86,33 +86,33 @@ export default function AccountRecovery({ mode, onClose }) {
 						</div>
 					</div>
 				) : (
-					<form className="form-box" onSubmit={submit}>
+					<form className="form" onSubmit={submit}>
 						{!isResult ? (
 							<>
 								{!isId && (
-									<div className="form-item">
-										<label htmlFor="recovery-id" className="form-label">아이디 <span className="required" aria-hidden="true">*</span></label>
+									<div className="form-field">
+										<label htmlFor="recovery-id" className="form-label">아이디 <span className="form-field-required" aria-hidden="true">*</span></label>
 										<input id="recovery-id" className="form-control" autoComplete="username" value={accountId} onChange={(event) => setAccountId(event.target.value)} required />
 									</div>
 								)}
-								<div className="form-item">
-									<label htmlFor="recovery-phone" className="form-label">휴대전화 <span className="required" aria-hidden="true">*</span></label>
+								<div className="form-field">
+									<label htmlFor="recovery-phone" className="form-label">휴대전화 <span className="form-field-required" aria-hidden="true">*</span></label>
 									<input id="recovery-phone" className="form-control" type="tel" autoComplete="tel" value={phone} onChange={(event) => setPhone(event.target.value)} required />
 								</div>
-								<div className="form-item">
-									<label htmlFor="recovery-name" className="form-label">이름 <span className="required" aria-hidden="true">*</span></label>
+								<div className="form-field">
+									<label htmlFor="recovery-name" className="form-label">이름 <span className="form-field-required" aria-hidden="true">*</span></label>
 									<input id="recovery-name" className="form-control" autoComplete="name" value={name} onChange={(event) => setName(event.target.value)} required />
 								</div>
 								<button type="submit" className="btn btn-primary btn-lg btn-login" disabled={!phone.trim() || !name.trim() || (!isId && !accountId.trim())}>다음</button>
 							</>
 						) : (
 							<>
-								<div className="form-item">
-									<label htmlFor="recovery-password" className="form-label">변경 비밀번호 <span className="required" aria-hidden="true">*</span></label>
+								<div className="form-field">
+									<label htmlFor="recovery-password" className="form-label">변경 비밀번호 <span className="form-field-required" aria-hidden="true">*</span></label>
 									<input id="recovery-password" className="form-control" type="password" autoComplete="new-password" {...passwordRules} aria-describedby="recovery-password-help" value={password} onChange={(event) => { setPassword(event.target.value); setError(""); }} required />
 								</div>
-								<div className="form-item">
-									<label htmlFor="recovery-confirmation" className="form-label">비밀번호 확인 <span className="required" aria-hidden="true">*</span></label>
+								<div className="form-field">
+									<label htmlFor="recovery-confirmation" className="form-label">비밀번호 확인 <span className="form-field-required" aria-hidden="true">*</span></label>
 									<input id="recovery-confirmation" className="form-control" type="password" autoComplete="new-password" minLength={passwordRules.minLength} maxLength={passwordRules.maxLength} aria-invalid={error ? true : undefined} aria-describedby={error ? "recovery-error" : undefined} value={confirmation} onChange={(event) => { setConfirmation(event.target.value); setError(""); }} required />
 								</div>
 								<PasswordHelp id="recovery-password-help" />

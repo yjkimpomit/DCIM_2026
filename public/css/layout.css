@@ -104,10 +104,8 @@ body.page:not(:has(.join)):not(:has(.user-screen)):not(:has(.admin-screen)) {
 /* 사용자·관리자 공통 키보드 포커스 */
 :is(.header-button,
 	.header-actions .button-icon,
-	.user-settings,
 	.user-nav-link,
 	.user-breadcrumb-home,
-	.admin-user-dashboard,
 	.admin-nav-link,
 	.admin-breadcrumb-home,
 	.admin-skip-link):focus-visible {

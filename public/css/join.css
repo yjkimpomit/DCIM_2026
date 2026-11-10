@@ -5,7 +5,6 @@
 	padding-bottom: var(--join-padding-block);
 	color: var(--fg-white);
 	background-color: var(--bg-darknavy-subtle);
-	min-width: 1920px;
 }
 
 .join-header {
@@ -17,42 +16,7 @@
 }
 
 .join-form {
-	width: var(--join-width);
+	width: min(var(--join-width), calc(100% - 32px));
 	margin-inline: auto;
 	padding-top: 24px;
-}
-
-.join-notice {
-	padding: 24px 16px;
-	color: var(--fg-neutral-stronger);
-	background-color: var(--bg-primary-subtle);
-	font-size: var(--fs-14);
-	line-height: 1.5;
-	text-align: center;
-}
-
-.join-address {
-	display: flex;
-	flex-direction: column;
-	gap: 8px;
-}
-
-.join-postcode {
-	display: flex;
-	align-items: center;
-	gap: 8px;
-	max-width: 308px;
-}
-
-.join-postcode .form-control {
-	min-width: 0;
-}
-
-.join-address-help {
-	display: flex;
-	align-items: flex-start;
-	gap: 8px;
-	color: var(--fg-neutral-stronger);
-	font-size: var(--fs-14);
-	line-height: 1.5;
 }

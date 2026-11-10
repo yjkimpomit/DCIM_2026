@@ -28,8 +28,8 @@ function PolicyForm({ policy, onSave, onClose }) {
 	return <>
 		<AdminDialog title={policy.id ? "정책 수정" : "정책 추가"} onClose={onClose}>
 			<form onSubmit={submit}>
-				<p className="admin-form-guide">알람 정책을 {policy.id ? "수정" : "추가"}할 수 있으며, <span className="form-field-required">*</span> 해당 표시가 되어 있는 항목은 필수 입력사항입니다.</p>
-				<div className="admin-form-grid">
+				<p className="form-guide">알람 정책을 {policy.id ? "수정" : "추가"}할 수 있으며, <span className="form-field-required">*</span> 해당 표시가 되어 있는 항목은 필수 입력사항입니다.</p>
+				<div className="form-grid form-grid-two">
 					<div className="form-field">
 						<label className="form-label" htmlFor="alarms-field-1">정책명<span className="form-field-required" aria-hidden="true"> *</span></label>
 						<input className="form-control" id="alarms-field-1" required value={form.name} onChange={set("name")} maxLength={100} pattern=".*\S.*" autoFocus />
@@ -61,7 +61,7 @@ function PolicyForm({ policy, onSave, onClose }) {
 					</div>
 				</div>
 				<div className="admin-activation"><p className="form-label">활성화 여부 <span className="form-field-required">*</span></p><span className="form-switch"><input id="policy-enabled" className="switch" type="checkbox" role="switch" aria-label="정책 활성화 여부" checked={form.enabled} onChange={(event) => setForm({ ...form, enabled: event.target.checked })} /><label className="switch-label" htmlFor="policy-enabled"><span className="onoff-btn" /><span className="switch-state" aria-hidden="true" /></label></span></div>
-				{error && <p className="form-error admin-form-error" role="alert">{error}</p>}
+				{error && <p className="form-error" role="alert">{error}</p>}
 				<div className="form-actions">
 					<button type="submit" className="btn btn-primary btn-lg">저장</button>
 					<button type="button" className="btn btn-secondary btn-lg" onClick={onClose}>취소</button>

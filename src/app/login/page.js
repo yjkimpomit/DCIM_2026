@@ -37,12 +37,12 @@ export default function Login() {
 
 					<div className="login-form">
 						<h3 className="form-title">로그인</h3>
-						<div className="form-box" id="loginSection">
-							<div className="form-item">
+						<div className="form" id="loginSection">
+							<div className="form-field">
 								<label htmlFor="loginId" className="form-label">
 									아이디{" "}
 									<span
-										className="required"
+										className="form-field-required"
 										aria-label="필수 입력 항목"
 										aria-hidden="true"
 									>
@@ -57,11 +57,11 @@ export default function Login() {
 									onChange={(event) => setLoginId(event.target.value)}
 								/>
 							</div>
-							<div className="form-item">
+							<div className="form-field">
 								<label htmlFor="loginPwd" className="form-label">
 									비밀번호{" "}
 									<span
-										className="required"
+										className="form-field-required"
 										aria-label="필수 입력 항목"
 										aria-hidden="true"
 									>
