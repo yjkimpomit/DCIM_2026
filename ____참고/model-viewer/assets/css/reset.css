@@ -1,6 +1,60 @@
 /* reset.css – 기본 스타일 초기화 */
 :root {
 	color-scheme: dark;
+
+	/* primitives */
+	--white: #ffffff;
+	--black: #1F1F1F;
+	--cyan-600: #289bc2;
+	--darknavy-600: #1b334f;
+	--darknavy-700: #1a2942;
+	--darknavy-900: #090d19;
+	--lime-500: #d1ff47;
+	--lime-600: #b8f500;
+	--navy-500: #526a8e;
+	--navy-600: #3e516d;
+	--navy-700: #2e3d52;
+	--navy-800: #243142;
+	
+	/* semantic */
+	--fg-white: var(--white);
+	--fg-inverse: var(--black);
+	--bg-secondary-default: var(--navy-500);
+	--bg-secondary-default-a8: color-mix(in srgb, var(--bg-secondary-default) 8%, transparent);
+	--bg-secondary-subtle: var(--navy-700);
+	--bg-secondary-subtle-a24: color-mix(in srgb, var(--bg-secondary-subtle) 24%, transparent);
+	--bg-darknavy-muted: var(--darknavy-600);
+	--bg-darknavy-subtle: var(--darknavy-700);
+	--bg-darknavy-subtlest: var(--darknavy-900);
+	--bg-darknavy-subtlest-a64: color-mix(in srgb, var(--bg-darknavy-subtlest) 64%, transparent);
+	--bg-info-muted: var(--cyan-600);
+	--bg-info-muted-a24: color-mix(in srgb, var(--bg-info-muted) 24%, transparent);
+	--bg-lime-muted: var(--lime-600);
+
+	--border-lime-strong: var(--lime-500);
+	--border-secondary-muted: var(--navy-700);
+	--border-secondary-default: var(--navy-600);
+
+	--fg-lime-default: var(--lime-500);
+	--fg-secondary-subtler: var(--navy-800);
+	--fg-secondary-subtle: var(--navy-700);
+	--fg-secondary-muted: var(--navy-600);
+	
+	--box-shadow-1: 0 0 16px 2px var(--bg-darknavy-subtlest-a64);
+	--card-gradient: linear-gradient(180deg,
+			var(--bg-darknavy-muted) 0%,
+			var(--bg-darknavy-subtle) 100%);
+	--card-panel-bg: var(--bg-secondary-subtle-a24);
+	
+	/* component */
+	--model-border: var(--border-lime-strong);
+	
+	--table-bg-hover: var(--bg-info-muted-a24);
+	--table-bg-hover-indicator: var(--bg-info-muted);
+	--table-th-bg: var(--bg-darknavy-subtle);
+	--table-th-border: var(--border-secondary-default);
+	--table-td-bg: var(--bg-secondary-default-a8);
+	--table-td-border: var(--border-secondary-muted);
 }
 
 *,
@@ -110,6 +164,12 @@ body {
 	overflow: visible;
 }
 
+body {
+	background-image: radial-gradient(ellipse 50% 50% at center top,
+			#1c4074 0%,
+			#090d19 100%);
+}
+
 section {
 	margin-bottom: 3rem;
 }
@@ -128,8 +188,8 @@ section {
 
 table {
 	border-collapse: collapse;
-	border-top: 2px solid rgba(9, 13, 25, 0.6);
-	color: #FFF;
+	border-top: 2px solid var(--table-th-border);
+	color: var(--fg-white);
 	white-space: nowrap;
 }
 
@@ -140,15 +200,22 @@ table td {
 	line-height: 18px;
 	text-align: left;
 
-	border-right: 1px solid rgba(9, 13, 25, 0.6);
-	border-bottom: 1px solid rgba(9, 13, 25, 0.6);
+	border-right: 1px solid var(--table-th-border);
+	border-bottom: 1px solid var(--table-th-border);
 }
 
 table th {
 	min-width: 120px;
-	background: rgba(9, 13, 25, 0.1);
+	background: var(--table-th-bg);
 }
 
+table td {
+	background: var(--table-td-bg);
+	border-right: 1px solid var(--table-td-border);
+	border-bottom: 1px solid var(--table-td-border);
+}
+
+table th:last-child,
 table td:last-child {
 	border-right: 0;
 }
@@ -156,7 +223,7 @@ table td:last-child {
 h2 small {
 	margin-inline: 16px;
 	padding-inline: 8px;
-	color: #fff;
+	color: var(--fg-white);
 	background-color: #df134c;
 	text-decoration: underline;
 
